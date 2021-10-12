@@ -1,0 +1,11 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    margin-right: 5px;
+}
+.btn-update{
+    background-color: rgb(70, 104, 253);
+    color: #FFF;
+}

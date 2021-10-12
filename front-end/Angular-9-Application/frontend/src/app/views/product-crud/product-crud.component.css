@@ -1,0 +1,12 @@
+button{
+    margin-bottom: 3rem;
+}
+#btn-create-product{
+    background-color: #58F8B5;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all linear 0.25s;
+    border-radius: 4px;
+}
+#btn-create-product:hover{
+    color: rgb(255, 255, 255);
+}
