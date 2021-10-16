@@ -1,4 +1,4 @@
-import { Titulo } from './titulo.model';
+import { Titulo } from '../model/titulo/titulo.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar'

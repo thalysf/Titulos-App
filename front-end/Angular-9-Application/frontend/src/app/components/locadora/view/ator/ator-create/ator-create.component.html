@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-title>Novo Ator</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome" [(ngModel)]="ator.nome" type="text" name="name">
+        </mat-form-field>
+    </form>
+    <button mat-raised-button (click) ="createAtor()" class="button-new-ator">
+        Novo Ator
+     </button>
+     <button mat-raised-button (click) ="cancel()" color="secondary">
+        Cancelar
+     </button> 
+</mat-card>
