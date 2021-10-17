@@ -54,6 +54,18 @@ import { ItemCrudComponent } from './views/item-crud/item-crud.component';
 import { ItemReadComponent } from './components/locadora/view/item/item-read/item-read.component';
 import { ItemCreateComponent } from './components/locadora/view/item/item-create/item-create.component';
 import { ItemUpdateComponent } from './components/locadora/view/item/item-update/item-update.component';
+import { ClienteCrudComponent } from './views/cliente-crud/cliente-crud.component';
+import { ClienteReadComponent } from './components/atendimento/view/cliente/cliente-read/cliente-read.component';
+import { ClienteCreateComponent } from './components/atendimento/view/cliente/cliente-create/cliente-create.component';
+import { ClienteUpdateComponent } from './components/atendimento/view/cliente/cliente-update/cliente-update.component';
+import { SocioCrudComponent } from './views/socio-crud/socio-crud.component';
+import { SocioReadComponent } from './components/atendimento/view/socio/socio-read/socio-read.component';
+import { SocioCreateComponent } from './components/atendimento/view/socio/socio-create/socio-create.component';
+import { SocioUpdateComponent } from './components/atendimento/view/socio/socio-update/socio-update.component';
+import { LocacaoCrudComponent } from './views/locacao-crud/locacao-crud.component';
+import { LocacaoReadComponent } from './components/atendimento/view/locacao/locacao-read/locacao-read.component';
+import { LocacaoCreateComponent } from './components/atendimento/view/locacao/locacao-create/locacao-create.component';
+import { LocacaoUpdateComponent } from './components/atendimento/view/locacao/locacao-update/locacao-update.component';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -88,7 +100,19 @@ registerLocaleData(localePt);
     ItemCrudComponent,
     ItemReadComponent,
     ItemCreateComponent,
-    ItemUpdateComponent
+    ItemUpdateComponent,
+    ClienteCrudComponent,
+    ClienteReadComponent,
+    ClienteCreateComponent,
+    ClienteUpdateComponent,
+    SocioCrudComponent,
+    SocioReadComponent,
+    SocioCreateComponent,
+    SocioUpdateComponent,
+    LocacaoCrudComponent,
+    LocacaoReadComponent,
+    LocacaoCreateComponent,
+    LocacaoUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-title>Nova Locação</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Data da Locação" [(ngModel)]="locacao.dataLocacao" type="date" name="dataLocacao">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Data prevista da Devolução" [(ngModel)]="locacao.dataDevolucaoPrevista" type="date" name="dataDevolucaoPrevista">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Data efetiva da Devolução" [(ngModel)]="locacao.dataDevolucaoEfetiva" type="date" name="dataDevolucaoEfetiva">
+        </mat-form-field> 
+        <mat-form-field>
+            <input matInput placeholder="Valor Cobrado" [(ngModel)]="locacao.valorCobrado" type="number" name="valorCobrado">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Multa Cobrada" [(ngModel)]="locacao.multaCobrada" type="number" name="multaCobrada">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Item</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let item of itens" [value]="item.id">
+                  {{item.titulo.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field>
+            <mat-label>Cliente</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">
+                  {{cliente.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+    </form>
+    <button mat-raised-button (click) ="createLocacao()" class="button-new-locacao">
+        Nova Locação
+     </button>
+     <button mat-raised-button (click) ="cancel()" color="secondary">
+        Cancelar
+     </button> 
+</mat-card>

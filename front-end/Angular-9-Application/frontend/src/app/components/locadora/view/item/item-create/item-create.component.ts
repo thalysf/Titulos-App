@@ -9,12 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-create.component.css']
 })
 export class ItemCreateComponent implements OnInit {
+
+  titulo: Titulo = {
+    id: 0,
+    nome: "",
+    ano: "",
+    sinopse: "",
+    categoria: "",
+    diretor: "",
+    classe: "",
+    atores: []
+  }
+
   item: Item = {
     id: 0,
     dataAquisicao: "",
     numeroSerie: 0,
     tipo: "",
-    titulo: ""
+    titulo: this.titulo
   };
   titulos: Titulo[] = new Array();
 

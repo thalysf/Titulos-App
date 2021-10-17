@@ -1,3 +1,11 @@
+import { LocacaoUpdateComponent } from './components/atendimento/view/locacao/locacao-update/locacao-update.component';
+import { LocacaoCreateComponent } from './components/atendimento/view/locacao/locacao-create/locacao-create.component';
+import { LocacaoCrudComponent } from './views/locacao-crud/locacao-crud.component';
+import { SocioUpdateComponent } from './components/atendimento/view/socio/socio-update/socio-update.component';
+import { SocioCreateComponent } from './components/atendimento/view/socio/socio-create/socio-create.component';
+import { SocioCrudComponent } from './views/socio-crud/socio-crud.component';
+import { ClienteUpdateComponent } from './components/atendimento/view/cliente/cliente-update/cliente-update.component';
+import { ClienteCrudComponent } from './views/cliente-crud/cliente-crud.component';
 import { ItemUpdateComponent } from './components/locadora/view/item/item-update/item-update.component';
 import { ItemCrudComponent } from './views/item-crud/item-crud.component';
 import { TituloUpdateComponent } from './components/locadora/view/titulo/titulo-update/titulo-update.component';
@@ -20,6 +28,7 @@ import { ProductCreateComponent } from './components/product/product-create/prod
 import { ClasseCreateComponent } from './components/locadora/view/classe/classe-create/classe-create.component';
 import { ClasseUpdateComponent } from './components/locadora/view/classe/classe-update/classe-update.component';
 import { ItemCreateComponent } from './components/locadora/view/item/item-create/item-create.component';
+import { ClienteCreateComponent } from './components/atendimento/view/cliente/cliente-create/cliente-create.component';
 
 const routes: Routes = [
   {
@@ -97,6 +106,42 @@ const routes: Routes = [
   {
     path: "item/update/:id",
     component: ItemUpdateComponent
+  },
+  {
+    path: "cliente",
+    component: ClienteCrudComponent
+  },
+  {
+    path: "cliente/create",
+    component: ClienteCreateComponent
+  },
+  {
+    path: "cliente/update/:id",
+    component: ClienteUpdateComponent
+  },
+  {
+    path: "socio",
+    component: SocioCrudComponent
+  },
+  {
+    path: "socio/create",
+    component: SocioCreateComponent
+  },
+  {
+    path: "socio/update/:id",
+    component: SocioUpdateComponent
+  },
+  {
+    path: "locacao",
+    component: LocacaoCrudComponent
+  },
+  {
+    path: "locacao/create",
+    component: LocacaoCreateComponent
+  },
+  {
+    path: "locacao/update/:id",
+    component: LocacaoUpdateComponent
   }
 ];
 

@@ -9,13 +9,25 @@ import { Titulo } from '../../../model/titulo/titulo.model';
   styleUrls: ['./item-update.component.css']
 })
 export class ItemUpdateComponent implements OnInit {
+
+  titulo: Titulo = {
+    id: 0,
+    nome: "",
+    ano: "",
+    sinopse: "",
+    categoria: "",
+    diretor: "",
+    classe: "",
+    atores: []
+  }
+
   // item!: Item; -> usar esse após o backend estar implementado
   item: Item = {
     id: 0,
     dataAquisicao: "",
     numeroSerie: 0,
     tipo: "",
-    titulo: ""
+    titulo: this.titulo
   };
   titulos: Titulo[] = new Array();
   constructor(private router: Router, private route: ActivatedRoute) { }

@@ -6,5 +6,5 @@ export interface Titulo{
     categoria: string;
     diretor: string;
     classe: string;
-    atores: Array<string>;
+    atores: Array<string>; // -> alterar para Array<Ator>
 }
