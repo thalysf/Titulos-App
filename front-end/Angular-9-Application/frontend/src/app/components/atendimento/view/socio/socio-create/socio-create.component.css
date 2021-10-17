@@ -1,0 +1,42 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    margin: 10px;
+    transition: all 0.2s linear;
+}
+button:first-of-type{
+    padding-right: 14px;
+}
+button:not(:first-of-type):hover{
+    color: rgba(219, 16, 16, 0.795);
+}
+
+.button-new-socio{
+    background-color: #4acf4a;
+    color: #f1f1f1de;
+}
+.button-new-socio:hover{
+    color: #FFF;
+}
+textarea {
+    resize: none !important;
+    height: 140px;
+}
+label{
+    color: rgb(146, 143, 143);
+}
+select > option{
+    margin: 2px;
+    padding: 2px;
+    font-size: 1.1em;
+    background-color: #74a57494;
+    transition: all linear 300ms;
+    cursor: pointer;
+    color: #001a11;
+    font-weight: bolder;
+}
+select > option:hover{
+    background-color: #74a574fd;
+}

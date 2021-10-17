@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-title>Novo Item</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Número de Série" [(ngModel)]="item.numeroSerie" type="number" name="numeroSerie">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Título</mat-label>
+            <mat-select name="titulo">
+                <mat-option *ngFor="let titulo of titulos" [value]="titulo.id">
+                  {{titulo.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+        <mat-form-field>
+            <input matInput placeholder="Data de Aquisição" [(ngModel)]="item.dataAquisicao" type="date" name="dataAquisicao">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Tipo</mat-label>
+            <mat-select name="tipo">
+                <mat-option value="FITA">Fita</mat-option>
+                <mat-option value="DVD">DVD</mat-option>
+                <mat-option value="BLUERAY">BlueRay</mat-option>
+            </mat-select>
+        </mat-form-field> 
+    </form>
+    <button mat-raised-button (click) ="createItem()" class="button-new-item">
+        Novo Item
+     </button>
+     <button mat-raised-button (click) ="cancel()" color="secondary">
+        Cancelar
+     </button> 
+</mat-card>

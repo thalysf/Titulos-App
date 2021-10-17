@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-title>Novo Diretor</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome" [(ngModel)]="diretor.nome" type="text" name="name">
+        </mat-form-field>
+    </form>
+    <button mat-raised-button (click) ="createDiretor()" class="button-new-diretor">
+        Novo Diretor
+     </button>
+     <button mat-raised-button (click) ="cancel()" color="secondary">
+        Cancelar
+     </button> 
+</mat-card>

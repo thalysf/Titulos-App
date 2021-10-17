@@ -1,0 +1,22 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    margin: 10px;
+    transition: all 0.2s linear;
+}
+button:first-of-type{
+    padding-right: 14px;
+}
+button:not(:first-of-type):hover{
+    color: rgba(219, 16, 16, 0.795);
+}
+
+.button-new-item{
+    background-color: #4acf4a;
+    color: #f1f1f1de;
+}
+.button-new-item:hover{
+    color: #FFF;
+}

@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-title>Novo Título</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome" [(ngModel)]="titulo.nome" type="text" name="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Ano" [(ngModel)]="titulo.ano" type="number" name="valor">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Sinopse" [(ngModel)]="titulo.sinopse" type="text" name="sinopse"> </textarea>
+        </mat-form-field> 
+        <mat-form-field>
+            <input matInput placeholder="Categoria" [(ngModel)]="titulo.categoria" type="text" name="categoria">
+        </mat-form-field>
+ 
+        <mat-form-field>
+            <mat-label>Diretor</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let diretor of diretores" [value]="diretor.id">
+                  {{diretor.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+        <br>
+        <mat-form-field>
+            <mat-label>Classe</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let classe of classes" [value]="classe.id">
+                  {{classe.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+        <label for="atoresSelecionados">Atores:</label>
+        <select multiple [(ngModel)]="atoresSelecionados" name="atoresSelecionados" id="atoresSelecionados" style="height: 300px;">
+            <option *ngFor="let ator of atores" [value]="ator.id">{{ator.nome}}</option>
+        </select>
+    </form>
+    <button mat-raised-button (click) ="createTitulo()" class="button-new-titulo">
+        Novo Título
+     </button>
+     <button mat-raised-button (click) ="cancel()" color="secondary">
+        Cancelar
+     </button> 
+</mat-card>

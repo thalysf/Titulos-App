@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-title>Update Sócio</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome" [(ngModel)]="socio.nome" type="text" name="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Numéro da inscrição" [(ngModel)]="socio.numInscricao" type="number" name="numInscricao">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Data de nascimento" [(ngModel)]="socio.dataNascimento" type="date" name="dataNascimento">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Sexo" [(ngModel)]="socio.sexo" type="text" name="sexo">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Ativo" [(ngModel)]="socio.ativo" type="text" name="ativo">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="CPF" [(ngModel)]="socio.cpf" type="text" name="cpf">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Endereço" [(ngModel)]="socio.endereco" type="text" name="endereco">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Telefone" [(ngModel)]="socio.tel" type="text" name="tel">
+        </mat-form-field>
+        <label for="dependentesSelecionados">Dependentes:</label>
+        <select multiple [(ngModel)]="dependentesSelecionados" name="dependentesSelecionados" id="dependentesSelecionados" style="height: 300px;">
+            <option *ngFor="let dependente of dependentes" [value]="dependente.id">{{dependente.nome}}</option>
+        </select>
+    </form>
+    <button mat-raised-button (click) ="updateSocio()" class="button-update-socio">
+        Update Sócio
+     </button>
+     <button mat-raised-button (click) ="cancel()" color="secondary">
+        Cancelar
+     </button> 
+</mat-card>

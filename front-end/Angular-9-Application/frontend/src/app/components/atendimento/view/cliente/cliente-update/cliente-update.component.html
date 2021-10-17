@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-title>Atualizar Cliente</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome" [(ngModel)]="cliente.nome" type="text" name="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Numéro da inscrição" [(ngModel)]="cliente.numInscricao" type="number" name="numInscricao">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Data de nascimento" [(ngModel)]="cliente.dataNascimento" type="date" name="dataNascimento">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Sexo" [(ngModel)]="cliente.sexo" type="text" name="sexo">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Ativo" [(ngModel)]="cliente.ativo" type="text" name="ativo">
+        </mat-form-field>
+    </form>
+    <button mat-raised-button (click) ="updateCliente()" class="button-update-cliente">
+        Atualizar Cliente
+     </button>
+     <button mat-raised-button (click) ="cancel()" color="secondary">
+        Cancelar
+     </button> 
+</mat-card>
