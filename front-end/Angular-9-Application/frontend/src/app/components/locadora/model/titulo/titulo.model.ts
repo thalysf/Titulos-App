@@ -1,3 +1,4 @@
+import { Ator } from './../ator/ator.model';
 export interface Titulo{
     id?: number;
     nome: string;
@@ -6,5 +7,5 @@ export interface Titulo{
     categoria: string;
     diretor: string;
     classe: string;
-    atores: Array<string>; // -> alterar para Array<Ator>
+    atores: Array<Ator>;
 }

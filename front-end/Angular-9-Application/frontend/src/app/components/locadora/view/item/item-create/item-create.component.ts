@@ -1,3 +1,4 @@
+import { Ator } from './../../../model/ator/ator.model';
 import { Titulo } from 'src/app/components/locadora/model/titulo/titulo.model';
 import { Item } from './../../../model/item/item.model';
 import { Router } from '@angular/router';
@@ -29,16 +30,22 @@ export class ItemCreateComponent implements OnInit {
     titulo: this.titulo
   };
   titulos: Titulo[] = new Array();
-
+  atores: Ator[] = new Array();
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.atores = [
+      { id: 1, nome: "Joao" },
+      { id: 2, nome: "Carla" },
+      { id: 3, nome: "Ana" },
+      { id: 4, nome: "Andrea" },
+      { id: 5, nome: "Maria" }]
     this.titulos = [
       { id: 1, nome: "Era uma vez", ano: "2021", sinopse: "o amor é furada", categoria: "ficção", diretor: "Carla", classe: "ouro", 
-      atores: ["joao", "ana", "carlos"]
+      atores: this.atores
       },
       { id: 2, nome: "Era do gelo", ano: "2009", sinopse: "filme gelado e engraçado", categoria: "aventura", diretor: "Jack", classe: "diamante", 
-      atores: ["mamute", "tigre", "tartaruga"]
+      atores: this.atores
       }
       ];
   }

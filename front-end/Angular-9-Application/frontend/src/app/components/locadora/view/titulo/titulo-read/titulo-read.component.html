@@ -45,7 +45,9 @@
        <!-- Atores Column -->
        <ng-container matColumnDef="atores">
         <th mat-header-cell *matHeaderCellDef>Atores</th>
-        <td mat-cell *matCellDef="let row">{{row.atores}}</td>
+        <td mat-cell *matCellDef="let row">
+          <span *ngFor="let ator of row.atores">{{ator.nome}}, </span>
+        </td>
       </ng-container>   
 
     <!-- Action Column -->

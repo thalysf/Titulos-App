@@ -1,3 +1,4 @@
+import { Ator } from './../../../../locadora/model/ator/ator.model';
 import { Item } from './../../../../locadora/model/item/item.model';
 import { Titulo } from 'src/app/components/locadora/model/titulo/titulo.model';
 import { Cliente } from './../../../model/cliente/cliente.model';
@@ -12,22 +13,29 @@ import { Component, OnInit } from '@angular/core';
 export class LocacaoReadComponent implements OnInit {
   locacoes: Locacao[] = new Array();
   clientes: Cliente[] = new Array();
+  atores: Ator[] = new Array();
   titulos: Titulo[] = new Array();
   itens: Item[] = new Array();
   displayedColumns = ['id', 'dataLocacao', 'dataDevolucaoPrevista', 'dataDevolucaoEfetiva', 'valorCobrado', 'multaCobrada', 'item', 'cliente', 'action'];
   constructor() { }
 
   ngOnInit(): void {
+    this.atores = [
+      { id: 1, nome: "Joao" },
+      { id: 2, nome: "Carla" },
+      { id: 3, nome: "Ana" },
+      { id: 4, nome: "Andrea" },
+      { id: 5, nome: "Maria" }]
     this.clientes = [
       {id: 1, nome: "Carol", numInscricao: 5445561, dataNascimento: "10/05/1999", sexo: "feminino", ativo: true},
       {id: 2, nome: "Igor", numInscricao: 1689561, dataNascimento: "30/01/2000", sexo: "masculino", ativo: true}
     ];
     this.titulos = [
       { id: 1, nome: "Era uma vez", ano: "2021", sinopse: "o amor é furada", categoria: "ficção", diretor: "Carla", classe: "ouro", 
-      atores: ["joao", "ana", "carlos"]
+      atores: this.atores
       },
       { id: 2, nome: "Era do gelo", ano: "2009", sinopse: "filme gelado e engraçado", categoria: "aventura", diretor: "Jack", classe: "diamante", 
-      atores: ["mamute", "tigre", "tartaruga"]
+      atores: this.atores
       }
       ];
       

@@ -12,7 +12,7 @@ export class ClasseCreateComponent implements OnInit {
     id: 0,
     nome: "",
     valor: 0,
-    dataDevolucao: ""
+    prazoDevolucao: 0
   }
   constructor(private router: Router) { }
 

@@ -35,9 +35,9 @@ export class TituloCreateComponent implements OnInit {
       {id: 3, nome: "Ana"},
     ];
     this.classes = [
-      { id: 1, nome: "Bronze", valor: 1200, dataDevolucao: "20/12/2021"},
-      { id: 2, nome: "Prata", valor: 3000, dataDevolucao: "20/11/2021"},
-      { id: 3, nome: "Ouro", valor: 7000, dataDevolucao: "20/10/2021"}
+      { id: 1, nome: "Bronze", valor: 1200, prazoDevolucao: 20},
+      { id: 2, nome: "Prata", valor: 3000, prazoDevolucao: 15},
+      { id: 3, nome: "Ouro", valor: 7000, prazoDevolucao: 10}
       ];
     this.atores = [
       { id: 1, nome: "Joao" },
