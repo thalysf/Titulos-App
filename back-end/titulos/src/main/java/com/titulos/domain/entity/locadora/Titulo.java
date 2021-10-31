@@ -1,10 +1,12 @@
-package com.titulos.domain.entity;
+package com.titulos.domain.entity.locadora;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
-import lombok.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,24 +16,27 @@ public class Titulo {
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.AUTO)
 	 private Long idTitulo;
-	 
+	 @NotNull
 	 private String nome;
-	 
+	 @NotNull
 	 private String ano;
-
+	 @NotNull
 	 private String categoria;
-	 
+	 @NotNull
 	 private String sinopse;
 	 
 	 @ManyToOne
+	 @NotNull
 	 @JoinColumn(name = "idDiretor")
 	 private Diretor diretor;
 	 
 	 @ManyToOne
+	 @NotNull
 	 @JoinColumn(name = "idClasse")
 	 private Classe classe;
 	 
 	 @ManyToMany
+	 @NotNull
 	 @JoinTable(name="ator_titulo", joinColumns= {@JoinColumn(name="idTitulo")}, inverseJoinColumns= {@JoinColumn(name="idAtor")})
 	 private List<Ator> atores;
 }

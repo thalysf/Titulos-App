@@ -1,4 +1,4 @@
-import { Dependente } from './../../../model/cliente/dependente.model';
+import { Cliente } from './../../../model/cliente/cliente.model';
 import { Socio } from './../../../model/cliente/socio.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -10,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocioReadComponent implements OnInit {
   socios: Socio[] = new Array();
-  dependentesLais: Dependente[] = new Array();
-  dependentesFabiano: Dependente[] = new Array();
+  dependentesLais: Cliente[] = new Array();
+  dependentesFabiano: Cliente[] = new Array();
 
 
   displayedColumns = ['id', 'nome', 'numInscricao', 'dataNascimento', 'sexo', 'ativo', 'cpf', 'endereco', 'tel', 'dependentes', 'action'];

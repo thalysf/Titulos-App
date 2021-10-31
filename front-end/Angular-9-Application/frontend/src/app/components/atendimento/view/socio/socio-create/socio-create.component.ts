@@ -1,5 +1,5 @@
+import { Cliente } from './../../../model/cliente/cliente.model';
 import { Socio } from './../../../model/cliente/socio.model';
-import { Dependente } from './../../../model/cliente/dependente.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -21,7 +21,7 @@ export class SocioCreateComponent implements OnInit {
     tel: "",
     dependentes: []
   }
-  dependentes: Dependente[] = new Array();
+  dependentes: Cliente[] = new Array();
   dependentesSelecionados: any;
   constructor(private router: Router) { }
 

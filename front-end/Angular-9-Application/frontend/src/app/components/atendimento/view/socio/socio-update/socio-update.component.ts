@@ -1,4 +1,4 @@
-import { Dependente } from './../../../model/cliente/dependente.model';
+import { Cliente } from './../../../model/cliente/cliente.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Socio } from './../../../model/cliente/socio.model';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +22,7 @@ export class SocioUpdateComponent implements OnInit {
     tel: "",
     dependentes: []
   }
-  dependentes: Dependente[] = new Array();
+  dependentes: Cliente[] = new Array();
   dependentesSelecionados: any;
   constructor(private router: Router, private route: ActivatedRoute) { }
 
