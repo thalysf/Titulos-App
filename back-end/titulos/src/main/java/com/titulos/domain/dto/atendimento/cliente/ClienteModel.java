@@ -14,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @MappedSuperclass
 public abstract class ClienteModel {
+
     @JsonProperty("nome")
     @NotNull
     private String nome;
