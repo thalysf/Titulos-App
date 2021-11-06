@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Diretor {
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long idDiretor;
 	 @NotNull
 	 private String nome;

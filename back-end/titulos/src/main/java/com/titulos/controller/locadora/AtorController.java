@@ -1,8 +1,6 @@
 package com.titulos.controller.locadora;
 
-import com.titulos.domain.dto.atendimento.cliente.ClienteDto;
 import com.titulos.domain.dto.locadora.AtorDto;
-import com.titulos.domain.entity.atendimento.cliente.Cliente;
 import com.titulos.service.locadora.AtorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,5 +51,4 @@ public class AtorController {
     {
         return atorService.listarAtores();
     }
-
 }

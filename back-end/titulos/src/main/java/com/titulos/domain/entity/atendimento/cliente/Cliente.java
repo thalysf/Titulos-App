@@ -13,6 +13,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Cliente extends ClienteModel{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;
 }

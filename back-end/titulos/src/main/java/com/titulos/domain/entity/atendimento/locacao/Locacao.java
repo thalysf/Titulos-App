@@ -16,7 +16,7 @@ import java.util.Date;
 @Entity
 public class Locacao {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idLocacao;
     @NotNull
     private Date dataLocacao;

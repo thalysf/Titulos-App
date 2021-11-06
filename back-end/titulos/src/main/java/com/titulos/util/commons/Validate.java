@@ -9,6 +9,6 @@ public class Validate {
         if(str == null)
             return true;
         else
-            return str.isEmpty();
+            return str.isEmpty() || str.equalsIgnoreCase("null");
     }
 }

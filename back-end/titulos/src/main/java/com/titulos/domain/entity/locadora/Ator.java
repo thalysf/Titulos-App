@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Ator {
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long idAtor;
 	 @NotNull
 	 private String nome;

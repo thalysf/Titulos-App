@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 public class Titulo {
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long idTitulo;
 	 @NotNull
 	 private String nome;

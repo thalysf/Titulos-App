@@ -24,25 +24,22 @@ public class AtorService {
 
     public AtorDto cadastrarAtor(AtorDto atorDto)
     {
-        if(atorDto.getIdAtor() != null)
+        if(!validate.isNullOrEmpty(String.valueOf(atorDto.getIdAtor())))
         {
-            throw new IllegalArgumentException("ID do ator deve ser enviado apenas para update, delete e/ou get");
+            throw new IllegalArgumentException("ID do ator não deve ser enviado na inserção!");
         }
-        else if(validate.isNullOrEmpty(atorDto.getNome()))
-        {
-            throw new IllegalArgumentException("Nome do ator não pode ser nulo ou vazio");
-        }
+        isValidAtor(atorDto);
 
         var atorEntity = atorMapper.atorDtoToAtor(atorDto);
         return atorMapper.atorToAtorDto(atorRepository.save(atorEntity));
     }
 
     public AtorDto atualizarAtor(AtorDto atorDto) {
-        if(atorDto.getIdAtor() != null)
+        if(validate.isNullOrEmpty(String.valueOf(atorDto.getIdAtor())))
         {
             throw new IllegalArgumentException("ID do ator não pode estar vazio ou nulo");
         }
-
+        isValidAtor(atorDto);
         var atorEntity = atorMapper.atorDtoToAtor(atorDto);
         return atorMapper.atorToAtorDto(atorRepository.save(atorEntity));
     }
@@ -78,5 +75,13 @@ public class AtorService {
 
     public List<AtorDto> listarAtores() {
         return atorMapper.listAtorToListAtorDto(atorRepository.findAll());
+    }
+
+    private void isValidAtor(AtorDto atorDto)
+    {
+        if(validate.isNullOrEmpty(atorDto.getNome()))
+        {
+            throw new IllegalArgumentException("Nome do ator não pode ser nulo ou vazio");
+        }
     }
 }
