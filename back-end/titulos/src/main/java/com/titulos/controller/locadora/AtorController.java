@@ -26,7 +26,7 @@ public class AtorController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public AtorDto atualizarAtor(@RequestBody AtorDto atorDto)
+    public AtorDto atualizarAtor(@Valid @RequestBody AtorDto atorDto)
     {
         return atorService.atualizarAtor(atorDto);
     }

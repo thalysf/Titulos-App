@@ -26,7 +26,7 @@ public class DiretorController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public DiretorDto atualizarDiretor(@RequestBody DiretorDto diretorDto)
+    public DiretorDto atualizarDiretor(@Valid @RequestBody DiretorDto diretorDto)
     {
         return diretorService.atualizarDiretor(diretorDto);
     }

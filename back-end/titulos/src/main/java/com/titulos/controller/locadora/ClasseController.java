@@ -26,7 +26,7 @@ public class ClasseController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public ClasseDto atualizarClasse(@RequestBody ClasseDto classeDto)
+    public ClasseDto atualizarClasse(@Valid @RequestBody ClasseDto classeDto)
     {
         return classeService.atualizarClasse(classeDto);
     }
