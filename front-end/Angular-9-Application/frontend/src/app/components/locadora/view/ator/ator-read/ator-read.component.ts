@@ -1,3 +1,4 @@
+import { AtorService } from './../../../service/ator.service';
 import { Ator } from './../../../model/ator/ator.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,17 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class AtorReadComponent implements OnInit {
   atores: Ator[] = new Array();
   displayedColumns = ['id', 'nome', 'action'];
-  constructor() { }
+  constructor(private atorService: AtorService) { }
 
   ngOnInit(): void {
-    this.atores = [
-      { id: 1, nome: "Joao" },
-      { id: 2, nome: "Carla" },
-      { id: 3, nome: "Ana" },
-      { id: 4, nome: "Andrea" },
-      { id: 5, nome: "Maria" },
-      { id: 6, nome: "Eduardo" }
-      ];
+    this.atorService.read().subscribe(atores =>{
+        this.atores = atores;
+    });
   }
   delete(id: String): void{
     // this.productService.delete(id);

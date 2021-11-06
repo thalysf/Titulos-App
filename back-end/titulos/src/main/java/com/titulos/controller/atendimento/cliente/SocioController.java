@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @Validated
+@CrossOrigin
 @RequestMapping("/atendimento/socio")
 public class SocioController {
     @Autowired

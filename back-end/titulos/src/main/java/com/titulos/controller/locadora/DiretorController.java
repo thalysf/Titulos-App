@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @Validated
+@CrossOrigin
 @RequestMapping("/locadora/diretor")
 public class DiretorController {
     @Autowired

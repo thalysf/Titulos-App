@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @Validated
+@CrossOrigin
 @RequestMapping("/atendimento/cliente")
 public class ClienteController {
     @Autowired
