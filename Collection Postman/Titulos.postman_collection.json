@@ -1,0 +1,1019 @@
+{
+	"info": {
+		"_postman_id": "44f31470-4d46-4d03-b892-5b26da313710",
+		"name": "Titulos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "locadora",
+			"item": [
+				{
+					"name": "ator",
+					"item": [
+						{
+							"name": "Cadastra Ator",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Joana\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/ator",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"ator"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta Ator",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/ator/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"ator",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza Ator",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_ator\": \"2\",\r\n    \"nome\": \"Aragorn\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/ator",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"ator"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Ator",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/ator/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"ator",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Todos Atores",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/ator",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"ator"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "classe",
+					"item": [
+						{
+							"name": "Cadastra Classe",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"diamante\",\r\n    \"valor\": 60.5,\r\n    \"prazo_devolucao\": 21\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/classe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"classe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta Classe",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/classe/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"classe",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza Classe",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_classe\": 1,\r\n    \"nome\": \"ouro\",\r\n    \"valor\": 29.8,\r\n    \"prazo_devolucao\": 14\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/classe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"classe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Classe",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/classe/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"classe",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Todas Classes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/classe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"classe"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "diretor",
+					"item": [
+						{
+							"name": "Cadastra Diretor",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Woody Allen\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/diretor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"diretor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta Diretor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/diretor/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"diretor",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza Diretor",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_diretor\": \"1\",\r\n    \"nome\": \"Steven Spielberg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/diretor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"diretor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Diretor",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/diretor/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"diretor",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Todos Diretores",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/diretor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"diretor"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "titulo",
+					"item": [
+						{
+							"name": "Cadastra Título",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Senhor dos Áneis\",\r\n    \"ano\": \"2011\",\r\n    \"categoria\": \"aventura\",\r\n    \"sinopse\": \"Batalhas na terra média.\",\r\n    \"diretor\": \r\n    {\r\n        \"id_diretor\": 2\r\n    },\r\n    \"classe\": \r\n    {\r\n        \"id_classe\": 2\r\n    },\r\n    \"atores\": [\r\n        {\r\n            \"id_ator\": 1\r\n        },\r\n        {\r\n            \"id_ator\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/titulo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"titulo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta Título",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/titulo/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"titulo",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza Título",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_titulo\": 2,\r\n    \"nome\": \"El Dourado 2\",\r\n    \"ano\": \"2022\",\r\n    \"categoria\": \"aventura\",\r\n    \"sinopse\": \"Em busca da cidade a muito perdida.\",\r\n    \"diretor\": {\r\n        \"id_diretor\": 1\r\n    },\r\n    \"classe\": {\r\n        \"id_classe\": 2\r\n    },\r\n    \"atores\": [\r\n        {\r\n            \"id_ator\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/titulo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"titulo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Título",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/titulo/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"titulo",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Todos Títulos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/titulo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"titulo"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "item",
+					"item": [
+						{
+							"name": "Cadastra Item",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numero_serie\": \"6544874156\",\r\n    \"data_aquisicao\": \"2011-05-05\",\r\n    \"tipo\": \"BLUERAY\",\r\n    \"titulo\":\r\n    {\r\n        \"id_titulo\": 2\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/item",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta Item",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/item/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"item",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza Item",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_item\": 2,\r\n    \"numero_serie\": \"6544874156\",\r\n    \"data_aquisicao\": \"2022-10-12\",\r\n    \"tipo\": \"DVD\",\r\n    \"titulo\": \r\n    {\r\n        \"id_titulo\": 2\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/locadora/item",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Item",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/item/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"item",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Todos Itens",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/locadora/item",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"locadora",
+										"item"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "atendimento",
+			"item": [
+				{
+					"name": "cliente",
+					"item": [
+						{
+							"name": "Cadastra Cliente",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Isa\",\r\n    \"num_inscricao\": 96416654,\r\n    \"data_nascimento\": \"1999-05-22\",\r\n    \"sexo\": \"masculino\",\r\n    \"ativo\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/atendimento/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"cliente"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta Cliente",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/atendimento/cliente/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"cliente",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza Cliente",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_cliente\": 1,\r\n    \"nome\": \"Ana Catarina\",\r\n    \"num_inscricao\": 96416654,\r\n    \"data_nascimento\": \"2009-05-22\",\r\n    \"sexo\": \"feminino\",\r\n    \"ativo\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/atendimento/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"cliente"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Cliente",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/atendimento/cliente/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"cliente",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Todos Clientes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/atendimento/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"cliente"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "socio",
+					"item": [
+						{
+							"name": "Cadastra Sócio",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Esther Débora Tânia Corte Real\",\r\n    \"num_inscricao\": 96416654,\r\n    \"data_nascimento\": \"1999-05-22\",\r\n    \"sexo\": \"masculino\",\r\n    \"ativo\": true,\r\n    \"cpf\": \"756.773.593-86\",\r\n    \"endereco\": \"Rua Wilmar Sauner\",\r\n    \"tel\": \"(43) 3750-0720\",\r\n    \"dependentes\": [\r\n        {\r\n            \"id_cliente\": 4\r\n        },\r\n        {\r\n            \"id_cliente\": 5\r\n        }\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/atendimento/socio",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"socio"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta Sócio",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/atendimento/socio/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"socio",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza Sócio",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_socio\": 5,\r\n    \"nome\": \"Esther Débora Tânia Corte Real\",\r\n    \"num_inscricao\": 96416654,\r\n    \"data_nascimento\": \"1999-05-22\",\r\n    \"sexo\": \"masculino\",\r\n    \"ativo\": true,\r\n    \"cpf\": \"756.773.593-86\",\r\n    \"endereco\": \"Rua Wilmar Sauner\",\r\n    \"tel\": \"(43) 3750-0720\",\r\n    \"dependentes\": [\r\n        {\r\n            \"id_cliente\": 4\r\n        },\r\n        {\r\n            \"id_cliente\": 5\r\n        }\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/atendimento/socio",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"socio"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Sócio",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/atendimento/socio/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"socio",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Todos Sócios",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/atendimento/socio",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"socio"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "locacao",
+					"item": [
+						{
+							"name": "Cadastra Locação",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data_locacao\": \"2021-05-06\",\r\n    \"cliente\": \r\n    {\r\n        \"id_cliente\": 4\r\n    },\r\n    \"item\":\r\n    {\r\n        \"id_item\": 4\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/atendimento/locacao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"locacao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta Locação",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/atendimento/locacao/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"locacao",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza Locação",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n        \"id_locacao\": 2,\r\n        \"data_locacao\": \"2021-05-06\",\r\n        \"data_devolucao_prevista\": \"2021-05-20\",\r\n        \"data_devolucao_efetiva\": \"2021-05-20\",\r\n        \"valor_cobrado\": 29.8,\r\n        \"cliente\": {\r\n            \"id_cliente\": 4\r\n        },\r\n        \"item\": {\r\n            \"id_item\": 3\r\n        }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/atendimento/locacao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"locacao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Locação",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/atendimento/locacao/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"locacao",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recupera Todas Locações",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/atendimento/locacao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"locacao"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
