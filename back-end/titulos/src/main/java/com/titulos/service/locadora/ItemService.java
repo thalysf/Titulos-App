@@ -58,17 +58,14 @@ public class ItemService {
     }
 
     public ItemDto listarItem(String id_item) {
-        var idItem = Long.parseLong(id_item);
-        ItemDto itemDto = new ItemDto();
-        try {
-            itemDto = itemMapper.itemToItemDto(itemRepository.getById(idItem));
-        } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("Item de id " + id_item + " não encontrada! Operação não pode ser efetuada!");
-        }
-        return itemDto;
+        return itemMapper
+                .itemToItemDto(
+                        itemRepository
+                                .findById(Long.parseLong(id_item))
+                                .orElseThrow(() -> new EntityNotFoundException("Item de id " + id_item + " não encontrado! Operação não pode ser efetuada!")));
     }
 
-    public List<ItemDto> listarItemes() {
+    public List<ItemDto> listarItens() {
         return itemMapper.listItemToListItemDto(itemRepository.findAll());
     }
 
@@ -85,7 +82,9 @@ public class ItemService {
         ) {
             illegalArgumentsErrosMsg += "Tipo do item deve ser ou DVD ou BLUERAY ou FITA! ";
         }
-
+        if (itemDto.getDataAquisicao() == null) {
+            illegalArgumentsErrosMsg += "O campo data de aquisição deve ser preenchido! ";
+        }
         if(!illegalArgumentsErrosMsg.isEmpty())
             throw new IllegalArgumentException(illegalArgumentsErrosMsg);
     }

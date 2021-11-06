@@ -62,16 +62,11 @@ public class DiretorService {
     }
 
     public DiretorDto listarDiretor(String id_diretor) {
-        var idDiretor = Long.parseLong(id_diretor);
-        DiretorDto diretorDto = new DiretorDto();
-        try{
-            diretorDto = diretorMapper.diretorToDiretorDto(diretorRepository.getById(idDiretor));
-        }
-        catch (EntityNotFoundException e)
-        {
-            throw new EntityNotFoundException("Diretor de id " + id_diretor + " não encontrado! Operação não pode ser efetuada!");
-        }
-        return diretorDto;
+        return diretorMapper
+                .diretorToDiretorDto(
+                        diretorRepository
+                                .findById(Long.parseLong(id_diretor))
+                                .orElseThrow(() -> new EntityNotFoundException("Diretor de id " + id_diretor + " não encontrado! Operação não pode ser efetuada!")));
     }
 
     public List<DiretorDto> listarDiretores() {

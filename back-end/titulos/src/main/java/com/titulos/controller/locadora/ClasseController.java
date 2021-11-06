@@ -49,6 +49,6 @@ public class ClasseController {
     @ResponseStatus(HttpStatus.OK)
     public List<ClasseDto> listarClassees()
     {
-        return classeService.listarClassees();
+        return classeService.listarClasses();
     }
 }

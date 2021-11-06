@@ -62,17 +62,14 @@ public class TituloService {
     }
 
     public TituloDto listarTitulo(String id_titulo) {
-        var idTitulo = Long.parseLong(id_titulo);
-        TituloDto tituloDto = new TituloDto();
-        try {
-            tituloDto = tituloMapper.tituloToTituloDto(tituloRepository.getById(idTitulo));
-        } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("Titulo de id " + id_titulo + " não encontrada! Operação não pode ser efetuada!");
-        }
-        return tituloDto;
+        return tituloMapper
+                .tituloToTituloDto(
+                        tituloRepository
+                                .findById(Long.parseLong(id_titulo))
+                                .orElseThrow(() -> new EntityNotFoundException("Titulo de id " + id_titulo + " não encontrado! Operação não pode ser efetuada!")));
     }
 
-    public List<TituloDto> listarTituloes() {
+    public List<TituloDto> listarTitulos() {
         return tituloMapper.listTituloToListTituloDto(tituloRepository.findAll());
     }
 

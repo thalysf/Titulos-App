@@ -20,6 +20,7 @@ public class LocacaoDto {
     @JsonProperty("data_locacao")
     @NotNull
     private Date dataLocacao;
+
     @JsonProperty("data_devolucao_prevista")
     @NotNull
     private Date dataDevolucaoPrevista;

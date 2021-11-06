@@ -49,6 +49,6 @@ public class TituloController {
     @ResponseStatus(HttpStatus.OK)
     public List<TituloDto> listarTituloes()
     {
-        return tituloService.listarTituloes();
+        return tituloService.listarTitulos();
     }
 }

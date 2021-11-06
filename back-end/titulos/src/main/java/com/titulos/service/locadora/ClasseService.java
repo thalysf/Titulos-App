@@ -57,17 +57,14 @@ public class ClasseService {
     }
 
     public ClasseDto listarClasse(String id_classe) {
-        var idClasse = Long.parseLong(id_classe);
-        ClasseDto classeDto = new ClasseDto();
-        try {
-            classeDto = classeMapper.classeToClasseDto(classeRepository.getById(idClasse));
-        } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("Classe de id " + id_classe + " não encontrada! Operação não pode ser efetuada!");
-        }
-        return classeDto;
+        return classeMapper
+                .classeToClasseDto(
+                        classeRepository
+                                .findById(Long.parseLong(id_classe))
+                                .orElseThrow(() -> new EntityNotFoundException("Classe de id " + id_classe + " não encontrado! Operação não pode ser efetuada!")));
     }
 
-    public List<ClasseDto> listarClassees() {
+    public List<ClasseDto> listarClasses() {
         return classeMapper.listClasseToListClasseDto(classeRepository.findAll());
     }
 

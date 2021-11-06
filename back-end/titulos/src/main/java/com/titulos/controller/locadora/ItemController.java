@@ -49,6 +49,6 @@ public class ItemController {
     @ResponseStatus(HttpStatus.OK)
     public List<ItemDto> listarItemes()
     {
-        return itemService.listarItemes();
+        return itemService.listarItens();
     }
 }

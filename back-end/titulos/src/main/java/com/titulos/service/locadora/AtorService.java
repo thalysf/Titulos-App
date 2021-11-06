@@ -62,16 +62,11 @@ public class AtorService {
     }
 
     public AtorDto listarAtor(String id_ator) {
-        var idAtor = Long.parseLong(id_ator);
-        AtorDto atorDto = new AtorDto();
-        try{
-            atorDto = atorMapper.atorToAtorDto(atorRepository.getById(idAtor));
-        }
-        catch (EntityNotFoundException e)
-        {
-            throw new EntityNotFoundException("Ator de id " + id_ator + " não encontrado! Operação não pode ser efetuada!");
-        }
-        return atorDto;
+        return atorMapper
+                .atorToAtorDto(
+                        atorRepository
+                                .findById(Long.parseLong(id_ator))
+                                .orElseThrow(() -> new EntityNotFoundException("Ator de id " + id_ator + " não encontrado! Operação não pode ser efetuada!")));
     }
 
     public List<AtorDto> listarAtores() {
