@@ -24,7 +24,7 @@ public class ClasseController {
         return classeService.cadastrarClasse(classeDto);
     }
 
-    @PatchMapping
+    @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public ClasseDto atualizarClasse(@RequestBody ClasseDto classeDto)
     {

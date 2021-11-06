@@ -40,6 +40,7 @@ public class AtorService {
             throw new IllegalArgumentException("ID do ator não pode estar vazio ou nulo");
         }
         isValidAtor(atorDto);
+        listarAtor(String.valueOf(atorDto.getIdAtor()));
         var atorEntity = atorMapper.atorDtoToAtor(atorDto);
         return atorMapper.atorToAtorDto(atorRepository.save(atorEntity));
     }
@@ -68,7 +69,7 @@ public class AtorService {
         }
         catch (EntityNotFoundException e)
         {
-            throw new EntityNotFoundException("Ator de id " + id_ator + " não encontrado!");
+            throw new EntityNotFoundException("Ator de id " + id_ator + " não encontrado! Operação não pode ser efetuada!");
         }
         return atorDto;
     }

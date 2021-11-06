@@ -24,7 +24,7 @@ public class AtorController {
         return atorService.cadastrarAtor(atorDto);
     }
 
-    @PatchMapping
+    @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public AtorDto atualizarAtor(@RequestBody AtorDto atorDto)
     {

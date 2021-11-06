@@ -38,6 +38,7 @@ public class ClasseService {
             throw new IllegalArgumentException("ID da classe não pode estar vazio ou nulo");
         }
         isValidClasse(classeDto);
+        listarClasse(String.valueOf(classeDto.getIdClasse()));
         var classeEntity = classeMapper.classeDtoToClasse(classeDto);
         return classeMapper.classeToClasseDto(classeRepository.save(classeEntity));
     }
@@ -61,7 +62,7 @@ public class ClasseService {
         try {
             classeDto = classeMapper.classeToClasseDto(classeRepository.getById(idClasse));
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("Classe de id " + id_classe + " não encontrada!");
+            throw new EntityNotFoundException("Classe de id " + id_classe + " não encontrada! Operação não pode ser efetuada!");
         }
         return classeDto;
     }
@@ -71,12 +72,17 @@ public class ClasseService {
     }
 
     private void isValidClasse(ClasseDto classeDto) {
-        if (classeDto.getValor() <= 0D) {
-            throw new IllegalArgumentException("Valor da classe não pode ser menor ou igual a zero!");
-        } else if (classeDto.getPrazoDevolucao() <= 0) {
-            throw new IllegalArgumentException("Prazo de devolução em dias da classe não pode ser menor ou igual a zero!");
-        } else if (validate.isNullOrEmpty(classeDto.getNome())) {
-            throw new IllegalArgumentException("Nome do classe não pode ser nulo ou vazio");
+        String illegalArgumentsErrosMsg  = "";
+        if (classeDto.getValor() == null || classeDto.getValor() <= 0D) {
+            illegalArgumentsErrosMsg += "Valor da classe não pode ser menor ou igual a zero ou nulo! ";
         }
+        if (classeDto.getPrazoDevolucao() == null || classeDto.getPrazoDevolucao() <= 0) {
+            illegalArgumentsErrosMsg += "Prazo de devolução em dias da classe não pode ser menor ou igual a zero ou nulo! ";
+        }
+        if (validate.isNullOrEmpty(classeDto.getNome())) {
+            illegalArgumentsErrosMsg += "Nome do classe não pode ser nulo ou vazio! ";
+        }
+        if(!illegalArgumentsErrosMsg.isEmpty())
+            throw new IllegalArgumentException(illegalArgumentsErrosMsg);
     }
 }
