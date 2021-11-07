@@ -1,7 +1,7 @@
 import { Cliente } from './../cliente/cliente.model';
 import { Item } from './../../../locadora/model/item/item.model';
 export interface Locacao{
-    id?: number;
+    id_locacao?: number;
     dataLocacao: string;
     dataDevolucaoPrevista: string;
     dataDevolucaoEfetiva: string;

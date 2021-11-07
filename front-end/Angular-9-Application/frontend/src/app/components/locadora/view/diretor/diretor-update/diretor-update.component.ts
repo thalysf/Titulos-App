@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class DiretorUpdateComponent implements OnInit {
   //diretor!: Diretor; -> usar esse após o backend estar implementado
   diretor: Diretor = {
-    id: 0,
+    id_diretor: 0,
     nome: ""
   }
   constructor(private router: Router, private route: ActivatedRoute) { }

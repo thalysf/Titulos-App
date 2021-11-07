@@ -3,7 +3,7 @@
       <!-- Id Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+        <td mat-cell *matCellDef="let row">{{row.id_item}}</td>
       </ng-container>
   
       <!-- NumeroSerie Column -->
@@ -34,12 +34,12 @@
     <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let row">
-            <a routerLink="/item/update/{{row.id}}">
+            <a routerLink="/item/update/{{row.id_item}}">
                 <i class="material-icons edit-icon">
                     edit
                 </i>
             </a>
-            <a routerLink="/item" (click)="delete(row.id)">
+            <a routerLink="/item" (click)="delete(row.id_item)">
                 <i class="material-icons delete-icon">
                     delete
                 </i>

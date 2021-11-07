@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiretorCreateComponent implements OnInit {
   diretor: Diretor = {
-    id: 0,
+    id_diretor: 0,
     nome: ""
   }
   constructor(private router: Router) { }

@@ -21,33 +21,33 @@ export class LocacaoReadComponent implements OnInit {
 
   ngOnInit(): void {
     this.atores = [
-      { id: 1, nome: "Joao" },
-      { id: 2, nome: "Carla" },
-      { id: 3, nome: "Ana" },
-      { id: 4, nome: "Andrea" },
-      { id: 5, nome: "Maria" }]
+      { id_ator: 1, nome: "Joao" },
+      { id_ator: 2, nome: "Carla" },
+      { id_ator: 3, nome: "Ana" },
+      { id_ator: 4, nome: "Andrea" },
+      { id_ator: 5, nome: "Maria" }]
     this.clientes = [
-      {id: 1, nome: "Carol", numInscricao: 5445561, dataNascimento: "10/05/1999", sexo: "feminino", ativo: true},
-      {id: 2, nome: "Igor", numInscricao: 1689561, dataNascimento: "30/01/2000", sexo: "masculino", ativo: true}
+      {id_cliente: 1, nome: "Carol", numInscricao: 5445561, dataNascimento: "10/05/1999", sexo: "feminino", ativo: true},
+      {id_cliente: 2, nome: "Igor", numInscricao: 1689561, dataNascimento: "30/01/2000", sexo: "masculino", ativo: true}
     ];
     this.titulos = [
-      { id: 1, nome: "Era uma vez", ano: "2021", sinopse: "o amor é furada", categoria: "ficção", diretor: "Carla", classe: "ouro", 
+      { id_titulo: 1, nome: "Era uma vez", ano: "2021", sinopse: "o amor é furada", categoria: "ficção", diretor: "Carla", classe: "ouro", 
       atores: this.atores
       },
-      { id: 2, nome: "Era do gelo", ano: "2009", sinopse: "filme gelado e engraçado", categoria: "aventura", diretor: "Jack", classe: "diamante", 
+      { id_titulo: 2, nome: "Era do gelo", ano: "2009", sinopse: "filme gelado e engraçado", categoria: "aventura", diretor: "Jack", classe: "diamante", 
       atores: this.atores
       }
       ];
       
     this.itens = [
-      {id: 1, titulo: this.titulos[0], dataAquisicao: "10/10/2021", numeroSerie: 5465251, tipo: "DVD"},
-      {id: 2, titulo: this.titulos[1], dataAquisicao: "11/10/2021", numeroSerie: 7669100, tipo: "BLUERAY"}
+      {id_item: 1, titulo: this.titulos[0], dataAquisicao: "10/10/2021", numeroSerie: 5465251, tipo: "DVD"},
+      {id_item: 2, titulo: this.titulos[1], dataAquisicao: "11/10/2021", numeroSerie: 7669100, tipo: "BLUERAY"}
      ];
 
      this.locacoes = [
-        {id: 1, dataLocacao: "20/10/2021", dataDevolucaoPrevista: "20/11/2021", dataDevolucaoEfetiva: "19/11/2021", 
+        {id_locacao: 1, dataLocacao: "20/10/2021", dataDevolucaoPrevista: "20/11/2021", dataDevolucaoEfetiva: "19/11/2021", 
         valorCobrado: 120, multaCobrada: 0, item: this.itens[0], cliente: this.clientes[0]},
-        {id: 2, dataLocacao: "15/09/2021", dataDevolucaoPrevista: "15/10/2021", dataDevolucaoEfetiva: "01/11/2021", 
+        {id_locacao: 2, dataLocacao: "15/09/2021", dataDevolucaoPrevista: "15/10/2021", dataDevolucaoEfetiva: "01/11/2021", 
         valorCobrado: 190, multaCobrada: 70, item: this.itens[1], cliente: this.clientes[1]}
      ];
   }

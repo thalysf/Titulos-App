@@ -1,6 +1,9 @@
+import { Router } from '@angular/router';
 import { AtorService } from './../../../service/ator.service';
 import { Ator } from './../../../model/ator/ator.model';
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-ator-read',
@@ -10,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class AtorReadComponent implements OnInit {
   atores: Ator[] = new Array();
   displayedColumns = ['id', 'nome', 'action'];
-  constructor(private atorService: AtorService) { }
+  constructor(private atorService: AtorService, private router: Router) { }
 
   ngOnInit(): void {
     this.atorService.read().subscribe(atores =>{
@@ -18,7 +21,14 @@ export class AtorReadComponent implements OnInit {
     });
   }
   delete(id: String): void{
-    // this.productService.delete(id);
-    alert("Deletar ator " + id + " ainda não funcional! Ajustar Backend!");
+    this.atorService.delete(id).pipe(
+      catchError((err) => {
+        console.log(err);
+        this.atorService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })).subscribe(Ator =>{
+        this.atorService.showMsg("Ator deletado com sucesso!");
+        window.location.reload();
+    });
   }
 }

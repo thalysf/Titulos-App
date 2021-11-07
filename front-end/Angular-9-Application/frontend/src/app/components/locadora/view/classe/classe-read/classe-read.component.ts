@@ -13,9 +13,9 @@ export class ClasseReadComponent implements OnInit {
 
   ngOnInit(): void {
     this.classes = [
-      { id: 1, nome: "Bronze", valor: 1200, prazoDevolucao: 20},
-      { id: 2, nome: "Prata", valor: 3000, prazoDevolucao: 15},
-      { id: 3, nome: "Ouro", valor: 7000, prazoDevolucao: 10}
+      { id_classe: 1, nome: "Bronze", valor: 1200, prazoDevolucao: 20},
+      { id_classe: 2, nome: "Prata", valor: 3000, prazoDevolucao: 15},
+      { id_classe: 3, nome: "Ouro", valor: 7000, prazoDevolucao: 10}
       ];
   }
   delete(id: String): void{

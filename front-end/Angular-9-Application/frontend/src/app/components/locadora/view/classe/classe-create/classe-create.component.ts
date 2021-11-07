@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClasseCreateComponent implements OnInit {
   classe: Classe = {
-    id: 0,
+    id_classe: 0,
     nome: "",
     valor: 0,
     prazoDevolucao: 0

@@ -1,6 +1,9 @@
+import { AtorService } from './../../../service/ator.service';
 import { Ator } from './../../../model/ator/ator.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import {catchError} from 'rxjs/operators'
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-ator-create',
@@ -9,19 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtorCreateComponent implements OnInit {
   ator: Ator = {
-    id: 0,
+    id_ator: undefined,
     nome: ""
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router, private atorService: AtorService) { }
 
   ngOnInit(): void {
   }
   createAtor(): void{
-    alert("Ator ainda não pode ser criado! Ajustar backend!");
-    // this.productService.create(this.product).subscribe(() =>{
-    //   this.productService.showMsg('Produto criado com sucesso!');
-    //   this.router.navigate(['/ator']);
-    // });
+    this.atorService.create(this.ator)
+    .pipe(
+      catchError((err) => {
+        this.atorService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() =>{
+      this.atorService.showMsg('Ator criado com sucesso!');
+      this.router.navigate(['/ator']);
+    });
 
   }
   cancel(): void{

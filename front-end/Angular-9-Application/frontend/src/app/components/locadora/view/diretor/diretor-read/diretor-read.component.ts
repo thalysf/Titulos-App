@@ -13,10 +13,10 @@ export class DiretorReadComponent implements OnInit {
 
   ngOnInit(): void {
     this.diretores = [
-      { id: 1, nome: "Josué" },
-      { id: 2, nome: "Emma Wattson" },
-      { id: 3, nome: "Carlos Mioto" },
-      { id: 4, nome: "Maria Clara" }
+      { id_diretor: 1, nome: "Josué" },
+      { id_diretor: 2, nome: "Emma Wattson" },
+      { id_diretor: 3, nome: "Carlos Mioto" },
+      { id_diretor: 4, nome: "Maria Clara" }
       ];
   }
   delete(id: String): void{

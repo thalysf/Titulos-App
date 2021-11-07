@@ -3,7 +3,7 @@
       <!-- Id Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+        <td mat-cell *matCellDef="let row">{{row.id_socio}}</td>
       </ng-container>
   
       <!-- Name Column -->
@@ -66,12 +66,12 @@
     <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let row">
-            <a routerLink="/socio/update/{{row.id}}">
+            <a routerLink="/socio/update/{{row.id_socio}}">
                 <i class="material-icons edit-icon">
                     edit
                 </i>
             </a>
-            <a routerLink="/socio" (click)="delete(row.id)">
+            <a routerLink="/socio" (click)="delete(row.id_socio)">
                 <i class="material-icons delete-icon">
                     delete
                 </i>

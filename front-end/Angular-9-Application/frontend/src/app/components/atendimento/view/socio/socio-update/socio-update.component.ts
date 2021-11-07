@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class SocioUpdateComponent implements OnInit {
   // socio!: Socio; -> utilizar desta forma quando o backend estiver finalizado
   socio: Socio = {
-    id: 0,
+    id_socio: 0,
     numInscricao: 0,
     nome: "",
     dataNascimento: "",
@@ -28,10 +28,10 @@ export class SocioUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.dependentes = [
-      {id: 1, nome: "Carol", numInscricao: 9445561, dataNascimento: "10/05/2007", sexo: "feminino", ativo: true},
-      {id: 2, nome: "Igor", numInscricao: 1789561, dataNascimento: "30/01/2009", sexo: "masculino", ativo: true},
-      {id: 3, nome: "Ana", numInscricao: 5445561, dataNascimento: "10/05/2009", sexo: "feminino", ativo: true},
-      {id: 4, nome: "Julio", numInscricao: 3689561, dataNascimento: "30/01/2006", sexo: "masculino", ativo: true}
+      {id_cliente: 1, nome: "Carol", numInscricao: 9445561, dataNascimento: "10/05/2007", sexo: "feminino", ativo: true},
+      {id_cliente: 2, nome: "Igor", numInscricao: 1789561, dataNascimento: "30/01/2009", sexo: "masculino", ativo: true},
+      {id_cliente: 3, nome: "Ana", numInscricao: 5445561, dataNascimento: "10/05/2009", sexo: "feminino", ativo: true},
+      {id_cliente: 4, nome: "Julio", numInscricao: 3689561, dataNascimento: "30/01/2006", sexo: "masculino", ativo: true}
     ];
   }
   updateSocio(): void{

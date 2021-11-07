@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ClienteUpdateComponent implements OnInit {
   // cliente!: Cliente; -> utiliza desta forma quando o backend estiver finalizado
   cliente: Cliente = {
-    id: 0,
+    id_cliente: 0,
     nome: "",
     numInscricao: 0,
     dataNascimento: "",

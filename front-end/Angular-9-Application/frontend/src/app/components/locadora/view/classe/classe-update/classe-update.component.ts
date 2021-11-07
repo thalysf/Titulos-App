@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ClasseUpdateComponent implements OnInit {
   //classe!: Classe; -> usar esse após ter implementado o backend
   classe: Classe = {
-    id: 0,
+    id_classe: 0,
     nome: "",
     valor: 0,
     prazoDevolucao: 0

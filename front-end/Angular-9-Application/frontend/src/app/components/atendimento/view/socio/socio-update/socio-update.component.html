@@ -27,7 +27,7 @@
         </mat-form-field>
         <label for="dependentesSelecionados">Dependentes:</label>
         <select multiple [(ngModel)]="dependentesSelecionados" name="dependentesSelecionados" id="dependentesSelecionados" style="height: 300px;">
-            <option *ngFor="let dependente of dependentes" [value]="dependente.id">{{dependente.nome}}</option>
+            <option *ngFor="let dependente of dependentes" [value]="dependente.id_cliente">{{dependente.nome}}</option>
         </select>
     </form>
     <button mat-raised-button (click) ="updateSocio()" class="button-update-socio">

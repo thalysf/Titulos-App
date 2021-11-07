@@ -1,6 +1,6 @@
 import { Ator } from './../ator/ator.model';
 export interface Titulo{
-    id?: number;
+    id_titulo?: number;
     nome: string;
     ano: string;
     sinopse: string;

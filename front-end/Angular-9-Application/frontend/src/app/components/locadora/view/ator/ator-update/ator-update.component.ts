@@ -1,6 +1,9 @@
+import { AtorService } from './../../../service/ator.service';
 import { Ator } from './../../../model/ator/ator.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-ator-update',
@@ -10,19 +13,33 @@ import { Component, OnInit } from '@angular/core';
 export class AtorUpdateComponent implements OnInit {
   // ator!: Ator; -> usar esse após ter implementado o backend
   ator: Ator = {
-    id: 0,
+    id_ator: undefined,
     nome: ""
   }
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private atorService: AtorService) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id') || "";
+    this.atorService.readById(id).subscribe((ator) =>{
+      this.ator = ator;
+    })
   }
 
   updateAtor(): void {
     const id = this.route.snapshot.paramMap.get('id') || "";
-    alert("Ator ainda não pode ser atualizado, id: "+ id + "! Ajustar backend!");
-    //this.ProductService.update(this.product).subscribe(() => this.ProductService.showMsg("Produto alterado com sucesso! Recarregue a página para atualizar!"));
-    //this.router.navigate(['/ator']);
+    this.atorService.update(this.ator)
+    .pipe(
+      catchError((err) => {
+        this.atorService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() => 
+    {
+        this.atorService.showMsg("Ator alterado com sucesso!")
+        this.router.navigate(['/ator'])
+    });
+  
   }
   cancel(): void {
     this.router.navigate(['/ator']);

@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteCreateComponent implements OnInit {
   cliente: Cliente = {
-    id: 0,
+    id_cliente: 0,
     nome: "",
     numInscricao: 0,
     dataNascimento: "",

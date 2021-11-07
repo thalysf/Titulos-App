@@ -1,5 +1,5 @@
 export interface Classe{
-    id?: number;
+    id_classe?: number;
     nome: string;
     valor: number;
     prazoDevolucao: number;

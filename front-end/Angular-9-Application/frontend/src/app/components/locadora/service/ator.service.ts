@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar'
 import { Observable } from 'rxjs';
+import {catchError} from 'rxjs/operators'
 @Injectable({
   providedIn: 'root'
 })
@@ -14,16 +15,15 @@ export class AtorService {
   
   showMsg(msg: string): void{
     this.snackBar.open(msg, 'X',{
-      duration: 3000,
+      duration: 4000,
       horizontalPosition: "right",
       verticalPosition: "top"
     });
   }
 
-  // CRUD
-  // create(product: Product): Observable<Product>{
-  //   return this.http.post<Product>(this.baseUrl, product);
-  // }
+  create(ator: Ator): Observable<Ator>{
+    return this.http.post<Ator>(this.baseUrl, ator);
+  }
   read():Observable<Ator[]>{
     return this.http.get<Ator[]>(this.baseUrl);
   }
@@ -34,29 +34,14 @@ export class AtorService {
     return this.http.get<Ator>(url);
   }
 
-  // update(product: Product): Observable<Product>
-  // {
-  //   const url = `${this.baseUrl}/${product.id}`;
-  //   return this.http.put<Product>(url, product);
-  // }
+  update(ator: Ator): Observable<Ator>
+  {
+    return this.http.put<Ator>(this.baseUrl, ator);
+  }
 
-  // delete(id: String): void
-  // {
-  //   const url = `${this.baseUrl}/${id}`;
-  //   this.http.delete(url).subscribe(() => this.showMsg("Produto deletado com sucesso! Recarregue a página para atualizar!"));
-  // }
-  
-  // // Validations
-  // validateProductName(name: string): boolean{
-  //   if(name.length === 0){
-  //       return false;
-  //   }
-  //   return true;
-  // }
-  // validateProductPrice(price: number): boolean{
-  //   if(price <= 0){
-  //       return false;
-  //   }
-  //   return true;
-  // }
+  delete(id: String): Observable<Ator>
+  {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<Ator>(url);
+  }
 }

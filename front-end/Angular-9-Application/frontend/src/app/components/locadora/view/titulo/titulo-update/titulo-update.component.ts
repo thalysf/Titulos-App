@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class TituloUpdateComponent implements OnInit {
   //titulo!: Titulo; -> usar esse após o backend estar implementado
   titulo: Titulo = {
-    id: 0,
+    id_titulo: 0,
     nome: "",
     ano: "",
     sinopse: "",
@@ -32,22 +32,22 @@ export class TituloUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.diretores = [
-      {id: 1, nome: "Carlos"},
-      {id: 2, nome: "Anthony"},
-      {id: 3, nome: "Ana"},
+      {id_diretor: 1, nome: "Carlos"},
+      {id_diretor: 2, nome: "Anthony"},
+      {id_diretor: 3, nome: "Ana"},
     ];
     this.classes = [
-      { id: 1, nome: "Bronze", valor: 1200, prazoDevolucao: 20},
-      { id: 2, nome: "Prata", valor: 3000, prazoDevolucao: 15},
-      { id: 3, nome: "Ouro", valor: 7000, prazoDevolucao: 10}
+      { id_classe: 1, nome: "Bronze", valor: 1200, prazoDevolucao: 20},
+      { id_classe: 2, nome: "Prata", valor: 3000, prazoDevolucao: 15},
+      { id_classe: 3, nome: "Ouro", valor: 7000, prazoDevolucao: 10}
       ];
     this.atores = [
-      { id: 1, nome: "Joao" },
-      { id: 2, nome: "Carla" },
-      { id: 3, nome: "Ana" },
-      { id: 4, nome: "Andrea" },
-      { id: 5, nome: "Maria" },
-      { id: 6, nome: "Eduardo" }
+      { id_ator: 1, nome: "Joao" },
+      { id_ator: 2, nome: "Carla" },
+      { id_ator: 3, nome: "Ana" },
+      { id_ator: 4, nome: "Andrea" },
+      { id_ator: 5, nome: "Maria" },
+      { id_ator: 6, nome: "Eduardo" }
       ];
   }
   updateTitulo(): void{

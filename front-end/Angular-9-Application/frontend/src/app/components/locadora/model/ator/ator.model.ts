@@ -1,4 +1,4 @@
 export interface Ator{
-    id?: number;
+    id_ator?: number;
     nome: string;
 }

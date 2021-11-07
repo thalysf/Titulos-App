@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class ItemCreateComponent implements OnInit {
 
   titulo: Titulo = {
-    id: 0,
+    id_titulo: 0,
     nome: "",
     ano: "",
     sinopse: "",
@@ -23,7 +23,7 @@ export class ItemCreateComponent implements OnInit {
   }
 
   item: Item = {
-    id: 0,
+    id_item: 0,
     dataAquisicao: "",
     numeroSerie: 0,
     tipo: "",
@@ -35,16 +35,16 @@ export class ItemCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.atores = [
-      { id: 1, nome: "Joao" },
-      { id: 2, nome: "Carla" },
-      { id: 3, nome: "Ana" },
-      { id: 4, nome: "Andrea" },
-      { id: 5, nome: "Maria" }]
+      { id_ator: 1, nome: "Joao" },
+      { id_ator: 2, nome: "Carla" },
+      { id_ator: 3, nome: "Ana" },
+      { id_ator: 4, nome: "Andrea" },
+      { id_ator: 5, nome: "Maria" }]
     this.titulos = [
-      { id: 1, nome: "Era uma vez", ano: "2021", sinopse: "o amor é furada", categoria: "ficção", diretor: "Carla", classe: "ouro", 
+      { id_titulo: 1, nome: "Era uma vez", ano: "2021", sinopse: "o amor é furada", categoria: "ficção", diretor: "Carla", classe: "ouro", 
       atores: this.atores
       },
-      { id: 2, nome: "Era do gelo", ano: "2009", sinopse: "filme gelado e engraçado", categoria: "aventura", diretor: "Jack", classe: "diamante", 
+      { id_titulo: 2, nome: "Era do gelo", ano: "2009", sinopse: "filme gelado e engraçado", categoria: "aventura", diretor: "Jack", classe: "diamante", 
       atores: this.atores
       }
       ];
