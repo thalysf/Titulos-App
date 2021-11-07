@@ -1,7 +1,9 @@
-import { Dependente } from './../../../model/cliente/dependente.model';
+import { SocioService } from './../../../service/socio.service';
 import { Socio } from './../../../model/cliente/socio.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import {catchError} from 'rxjs/operators'
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-socio-read',
@@ -10,36 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocioReadComponent implements OnInit {
   socios: Socio[] = new Array();
-  dependentesLais: Dependente[] = new Array();
-  dependentesFabiano: Dependente[] = new Array();
 
 
   displayedColumns = ['id', 'nome', 'numInscricao', 'dataNascimento', 'sexo', 'ativo', 'cpf', 'endereco', 'tel', 'dependentes', 'action'];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private socioService: SocioService) { }
 
   ngOnInit(): void {
-    this.dependentesLais = [
-      {id: 4, nome: "Carol", numInscricao: 9445561, dataNascimento: "10/05/2007", sexo: "feminino", ativo: true},
-      {id: 5, nome: "Igor", numInscricao: 1789561, dataNascimento: "30/01/2009", sexo: "masculino", ativo: true}
-    ];
-
-    this.dependentesFabiano = [
-      {id: 6, nome: "Ana", numInscricao: 5445561, dataNascimento: "10/05/2009", sexo: "feminino", ativo: true},
-      {id: 7, nome: "Julio", numInscricao: 3689561, dataNascimento: "30/01/2006", sexo: "masculino", ativo: true}
-    ];
-
-    this.socios = [
-      {id: 1, nome: "Laís", numInscricao: 5445561, dataNascimento: "10/05/1999", sexo: "feminino", ativo: true, cpf: "550.255.480-55", 
-      endereco: "Rua das Flores", tel: "(31) 99975-6210", dependentes: this.dependentesLais
-      },
-      {id: 2, nome: "Fabiano", numInscricao: 5445561, dataNascimento: "10/05/1998", sexo: "masculino", ativo: true, cpf: "893.468.970-66", 
-      endereco: "Rua das Acácias", tel: "(27) 98795-5201", dependentes: this.dependentesFabiano
-      },
-    ];
-    
+    this.socioService.read().subscribe(socios =>{
+      this.socios = socios;
+  });
   }
   delete(id: String): void{
-    // this.productService.delete(id);
-    alert("Deletar sócio " + id + " ainda não funcional! Ajustar Backend!");
+    this.socioService.delete(id).pipe(
+      catchError((err) => {
+        console.log(err);
+        this.socioService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })).subscribe(() =>{
+        this.socioService.showMsg("Sócio deletado com sucesso!");
+        window.location.reload();
+    });
   }
 }

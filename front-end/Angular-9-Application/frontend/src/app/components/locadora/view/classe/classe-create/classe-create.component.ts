@@ -1,7 +1,9 @@
+import { ClasseService } from './../../../service/classe.service';
 import { Classe } from './../../../model/classe/classe.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import {catchError} from 'rxjs/operators'
+import { throwError } from 'rxjs';
 @Component({
   selector: 'app-classe-create',
   templateUrl: './classe-create.component.html',
@@ -9,21 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClasseCreateComponent implements OnInit {
   classe: Classe = {
-    id: 0,
-    nome: "",
-    valor: 0,
-    dataDevolucao: ""
+    id_classe: undefined,
+    nome:undefined,
+    valor: undefined,
+    prazo_devolucao: undefined
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router, private classeService: ClasseService) { }
 
   ngOnInit(): void {
   }
   createClasse(): void{
-    alert("Classe ainda não pode ser criada! Ajustar backend!");
-    // this.productService.create(this.product).subscribe(() =>{
-    //   this.productService.showMsg('Produto criado com sucesso!');
-    //   this.router.navigate(['/ator']);
-    // });
+    this.classeService.create(this.classe)
+    .pipe(
+      catchError((err) => {
+        this.classeService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() =>{
+      this.classeService.showMsg('Classe criada com sucesso!');
+      this.router.navigate(['/classe']);
+    });
 
   }
   cancel(): void{

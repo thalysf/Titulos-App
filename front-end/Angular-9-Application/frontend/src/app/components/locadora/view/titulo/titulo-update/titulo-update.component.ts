@@ -1,9 +1,15 @@
+import { AtorService } from './../../../service/ator.service';
+import { ClasseService } from './../../../service/classe.service';
+import { DiretorService } from './../../../service/diretor.service';
+import { TituloService } from './../../../service/titulo.service';
 import { Titulo } from 'src/app/components/locadora/model/titulo/titulo.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Ator } from './../../../model/ator/ator.model';
 import { Classe } from './../../../model/classe/classe.model';
 import { Diretor } from './../../../model/diretor/diretor.model';
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-titulo-update',
@@ -13,51 +19,60 @@ import { Component, OnInit } from '@angular/core';
 export class TituloUpdateComponent implements OnInit {
   //titulo!: Titulo; -> usar esse após o backend estar implementado
   titulo: Titulo = {
-    id: 0,
-    nome: "",
-    ano: "",
-    sinopse: "",
-    categoria: "",
-    diretor: "",
-    classe: "",
+    id_titulo: undefined,
+    nome: undefined,
+    ano: undefined,
+    sinopse: undefined,
+    categoria: undefined,
+    diretor: undefined,
+    classe: undefined,
     atores: []
   }
 
-  atoresSelecionados: any;
   diretores: Diretor[]  = new Array;
   classes: Classe[]  = new Array;
   atores: Ator[] = new Array();
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private tituloService: TituloService,
+    private diretorService: DiretorService, private classeService: ClasseService, private atorService: AtorService) { }
 
   ngOnInit(): void {
-    this.diretores = [
-      {id: 1, nome: "Carlos"},
-      {id: 2, nome: "Anthony"},
-      {id: 3, nome: "Ana"},
-    ];
-    this.classes = [
-      { id: 1, nome: "Bronze", valor: 1200, dataDevolucao: "20/12/2021"},
-      { id: 2, nome: "Prata", valor: 3000, dataDevolucao: "20/11/2021"},
-      { id: 3, nome: "Ouro", valor: 7000, dataDevolucao: "20/10/2021"}
-      ];
-    this.atores = [
-      { id: 1, nome: "Joao" },
-      { id: 2, nome: "Carla" },
-      { id: 3, nome: "Ana" },
-      { id: 4, nome: "Andrea" },
-      { id: 5, nome: "Maria" },
-      { id: 6, nome: "Eduardo" }
-      ];
+    this.diretorService.read().subscribe(diretores =>{
+      this.diretores = diretores;
+    });
+    this.classeService.read().subscribe(classes =>{
+      this.classes = classes;
+    });
+    this.atorService.read().subscribe(atores =>{
+      this.atores = atores;
+    });
+
+    const id = this.route.snapshot.paramMap.get('id') || "";
+    this.tituloService.readById(id)
+    .pipe(
+      catchError((err) => {
+        this.tituloService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe((titulo) =>{
+      this.titulo = titulo;
+    })
   }
   updateTitulo(): void{
-    console.log(this.atoresSelecionados);
     const id = this.route.snapshot.paramMap.get('id') || "";
-    alert("Título ainda não pode ser atualizado, id: "+ id + "! Ajustar backend!");
-    // this.productService.create(this.product).subscribe(() =>{
-    //   this.productService.showMsg('Produto criado com sucesso!');
-    //   this.router.navigate(['/ator']);
-    // });
+    this.tituloService.update(this.titulo)
+    .pipe(
+      catchError((err) => {
+        this.tituloService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() => 
+    {
+        this.tituloService.showMsg("Título alterado com sucesso!")
+        this.router.navigate(['/titulo'])
+    });
 
   }
   cancel(): void{

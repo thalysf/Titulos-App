@@ -1,5 +1,9 @@
+import { Router } from '@angular/router';
+import { AtorService } from './../../../service/ator.service';
 import { Ator } from './../../../model/ator/ator.model';
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-ator-read',
@@ -9,20 +13,21 @@ import { Component, OnInit } from '@angular/core';
 export class AtorReadComponent implements OnInit {
   atores: Ator[] = new Array();
   displayedColumns = ['id', 'nome', 'action'];
-  constructor() { }
+  constructor(private atorService: AtorService, private router: Router) { }
 
   ngOnInit(): void {
-    this.atores = [
-      { id: 1, nome: "Joao" },
-      { id: 2, nome: "Carla" },
-      { id: 3, nome: "Ana" },
-      { id: 4, nome: "Andrea" },
-      { id: 5, nome: "Maria" },
-      { id: 6, nome: "Eduardo" }
-      ];
+    this.atorService.read().subscribe(atores =>{
+        this.atores = atores;
+    });
   }
   delete(id: String): void{
-    // this.productService.delete(id);
-    alert("Deletar ator " + id + " ainda não funcional! Ajustar Backend!");
+    this.atorService.delete(id).pipe(
+      catchError((err) => {
+        this.atorService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })).subscribe(() =>{
+        this.atorService.showMsg("Ator deletado com sucesso!");
+        window.location.reload();
+    });
   }
 }

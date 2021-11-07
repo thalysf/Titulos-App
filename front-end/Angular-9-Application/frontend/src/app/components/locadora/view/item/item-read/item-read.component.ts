@@ -1,37 +1,34 @@
-import { Titulo } from './../../../model/titulo/titulo.model';
+import { ItemService } from './../../../service/item.service';
 import { Item } from './../../../model/item/item.model';
 import { Component, OnInit } from '@angular/core';
-
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 @Component({
   selector: 'app-item-read',
   templateUrl: './item-read.component.html',
   styleUrls: ['./item-read.component.css']
 })
 export class ItemReadComponent implements OnInit {
-  titulos: Titulo[] = new Array();
   itens: Item[] = new Array();
-  displayedColumns = ['id', 'titulo', 'dataAquisicao', 'tipo', 'action'];
+  displayedColumns = ['id', 'numeroSerie','titulo', 'dataAquisicao', 'tipo', 'action'];
 
-  constructor() { }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-    this.titulos = [
-      { id: 1, nome: "Era uma vez", ano: "2021", sinopse: "o amor é furada", categoria: "ficção", diretor: "Carla", classe: "ouro", 
-      atores: ["joao", "ana", "carlos"]
-      },
-      { id: 2, nome: "Era do gelo", ano: "2009", sinopse: "filme gelado e engraçado", categoria: "aventura", diretor: "Jack", classe: "diamante", 
-      atores: ["mamute", "tigre", "tartaruga"]
-      }
-      ];
-
-    this.itens = [
-      {id: 1, titulo: this.titulos[0], dataAquisicao: "10/10/2021", numeroSerie: 5465251, tipo: "DVD"},
-      {id: 2, titulo: this.titulos[1], dataAquisicao: "11/10/2021", numeroSerie: 7669100, tipo: "BLUERAY"}
-  ];
+    this.itemService.read().subscribe(itens =>{
+      this.itens = itens;
+  });
   }
 
   delete(id: String): void{
-    // this.productService.delete(id);
-    alert("Deletar item " + id + " ainda não funcional! Ajustar Backend!");
+    this.itemService.delete(id).pipe(
+      catchError((err) => {
+        console.log(err);
+        this.itemService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })).subscribe(() =>{
+        this.itemService.showMsg("Item deletado com sucesso!");
+        window.location.reload();
+    });
   }
 }

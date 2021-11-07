@@ -18,13 +18,10 @@ import { ClasseCrudComponent } from './views/classe-crud/classe-crud.component';
 import { AtorCreateComponent } from './components/locadora/view/ator/ator-create/ator-create.component';
 import { AtorUpdateComponent } from './components/locadora/view/ator/ator-update/ator-update.component';
 import { AtorCrudComponent } from './views/ator-crud/ator-crud.component';
-import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import  {HomeComponent} from './views/home/home.component';
-import {ProductCrudComponent} from './views/product-crud/product-crud.component';
-import { ProductCreateComponent } from './components/product/product-create/product-create.component';
 import { ClasseCreateComponent } from './components/locadora/view/classe/classe-create/classe-create.component';
 import { ClasseUpdateComponent } from './components/locadora/view/classe/classe-update/classe-update.component';
 import { ItemCreateComponent } from './components/locadora/view/item/item-create/item-create.component';
@@ -34,18 +31,6 @@ const routes: Routes = [
   {
   path: "",
   component: HomeComponent
-  },
-  {
-    path: "products",
-    component: ProductCrudComponent
-  },
-  {
-    path: "products/create",
-    component: ProductCreateComponent
-  },
-  {
-    path: "products/update/:id",
-    component: ProductUpdateComponent
   },
   {
     path: "ator",

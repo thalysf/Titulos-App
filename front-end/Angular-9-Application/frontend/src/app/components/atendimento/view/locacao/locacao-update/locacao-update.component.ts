@@ -1,9 +1,17 @@
+import { Socio } from './../../../model/cliente/socio.model';
+import { Ator } from './../../../../locadora/model/ator/ator.model';
 import { Titulo } from './../../../../locadora/model/titulo/titulo.model';
 import { Item } from './../../../../locadora/model/item/item.model';
 import { Cliente } from './../../../model/cliente/cliente.model';
 import { Locacao } from './../../../model/locacao/locacao.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { LocacaoService } from '../../../service/locacao.service';
+import { ItemService } from 'src/app/components/locadora/service/item.service';
+import { ClienteService } from '../../../service/cliente.service';
+import { SocioService } from '../../../service/socio.service';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-locacao-update',
@@ -14,47 +22,64 @@ export class LocacaoUpdateComponent implements OnInit {
   titulos: Titulo[] = new Array();
   itens: Item[] = new Array();
   clientes: Cliente[] = new Array();
+  socios: Socio[] = new Array();
   cliente!: Cliente;
+  socio!: Socio;
   item!: Item;
   locacao: Locacao = {
-    id: 0,
-    dataLocacao: "",
-    dataDevolucaoPrevista: "",
-    dataDevolucaoEfetiva: "",
-    valorCobrado: 0,
-    multaCobrada: 0,
+    id_locacao: undefined,
+    data_locacao: undefined,
+    data_devolucao_prevista: undefined,
+    data_devolucao_efetiva: undefined,
+    valor_cobrado: undefined,
+    multa_cobrada: undefined,
     cliente: this.cliente,
+    socio: this.socio,
     item: this.item
   }
-  constructor(private router: Router, private route: ActivatedRoute) { }
 
+  constructor(private router: Router, private route: ActivatedRoute, private locacaoService: LocacaoService, 
+    private itemService: ItemService, private clienteService: ClienteService, private socioService: SocioService) { }
   ngOnInit(): void {
-    this.clientes = [
-      {id: 1, nome: "Carol", numInscricao: 5445561, dataNascimento: "10/05/1999", sexo: "feminino", ativo: true},
-      {id: 2, nome: "Igor", numInscricao: 1689561, dataNascimento: "30/01/2000", sexo: "masculino", ativo: true},
-      {id: 3, nome: "Eduarda", numInscricao: 9982800, dataNascimento: "16/06/1998", sexo: "feminino", ativo: false}
-    ];
+    this.itemService.read().subscribe(itens =>{
+      this.itens = itens;
+    });
+    this.clienteService.read().subscribe(clientes =>{
+      this.clientes = clientes;
+    });
+    this.socioService.read().subscribe(socios =>{
+      this.socios = socios;
+    });
 
-    this.titulos = [
-      { id: 1, nome: "Era uma vez", ano: "2021", sinopse: "o amor é furada", categoria: "ficção", diretor: "Carla", classe: "ouro", 
-      atores: ["joao", "ana", "carlos"]
-      },
-      { id: 2, nome: "Era do gelo", ano: "2009", sinopse: "filme gelado e engraçado", categoria: "aventura", diretor: "Jack", classe: "diamante", 
-      atores: ["mamute", "tigre", "tartaruga"]
-      }
-      ];
-
-    this.itens = [
-      {id: 1, titulo: this.titulos[0], dataAquisicao: "10/10/2021", numeroSerie: 5465251, tipo: "DVD"},
-      {id: 2, titulo: this.titulos[1], dataAquisicao: "11/10/2021", numeroSerie: 7669100, tipo: "BLUERAY"}
-  ];
+    const id = this.route.snapshot.paramMap.get('id') || "";
+    this.locacaoService.readById(id)
+    .pipe(
+      catchError((err) => {
+        this.locacaoService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe((locacao) =>{
+      this.locacao = locacao;
+      console.log(this.locacao);
+    })
+   
   }
 
   updateLocacao(): void{
     const id = this.route.snapshot.paramMap.get('id') || "";
-    alert("Locação ainda não pode ser atualizada, id: "+ id + "! Ajustar backend!");
-    //this.ProductService.update(this.product).subscribe(() => this.ProductService.showMsg("Produto alterado com sucesso! Recarregue a página para atualizar!"));
-    //this.router.navigate(['/locacao']);
+    this.locacaoService.update(this.locacao)
+    .pipe(
+      catchError((err) => {
+        this.locacaoService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() => 
+    {
+        this.locacaoService.showMsg("Locação alterada com sucesso!")
+        this.router.navigate(['/locacao'])
+    });
   }
 
   cancel(): void{

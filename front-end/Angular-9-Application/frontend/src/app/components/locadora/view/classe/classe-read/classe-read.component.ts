@@ -1,5 +1,9 @@
+import { ClasseService } from './../../../service/classe.service';
+import { Router } from '@angular/router';
 import { Classe } from './../../../model/classe/classe.model';
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-classe-read',
@@ -8,18 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClasseReadComponent implements OnInit {
   classes: Classe[] = new Array();
-  displayedColumns = ['id', 'nome', 'valor', 'dataDevolucao', 'action'];
-  constructor() { }
+  displayedColumns = ['id', 'nome', 'valor', 'prazoDevolucao', 'action'];
+  constructor(private router: Router, private classeService: ClasseService) { }
 
   ngOnInit(): void {
-    this.classes = [
-      { id: 1, nome: "Bronze", valor: 1200, dataDevolucao: "20/12/2021"},
-      { id: 2, nome: "Prata", valor: 3000, dataDevolucao: "20/11/2021"},
-      { id: 3, nome: "Ouro", valor: 7000, dataDevolucao: "20/10/2021"}
-      ];
+    this.classeService.read().subscribe(classes =>{
+      this.classes = classes;
+  });
   }
   delete(id: String): void{
-    // this.productService.delete(id);
-    alert("Deletar classe " + id + " ainda não funcional! Ajustar Backend!");
+    this.classeService.delete(id).pipe(
+      catchError((err) => {
+        console.log(err);
+        this.classeService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })).subscribe(() =>{
+        this.classeService.showMsg("Classe deletada com sucesso!");
+        window.location.reload();
+    });
   }
 }

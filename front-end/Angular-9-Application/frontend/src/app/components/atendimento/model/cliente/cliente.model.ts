@@ -1,8 +1,8 @@
 export interface Cliente{
-    id?: number;
-    nome: string;
-    numInscricao: number;
-    dataNascimento: string;
-    sexo: string;
-    ativo: boolean;
+    id_cliente?: number;
+    nome?: string;
+    num_inscricao?: number;
+    data_nascimento?: string;
+    sexo?: string;
+    ativo?: boolean;
 }

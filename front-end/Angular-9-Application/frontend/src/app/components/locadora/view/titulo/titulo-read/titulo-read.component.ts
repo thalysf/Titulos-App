@@ -1,6 +1,10 @@
+import { TituloService } from './../../../service/titulo.service';
+import { Ator } from './../../../model/ator/ator.model';
 import { Router } from '@angular/router';
 import { Titulo } from 'src/app/components/locadora/model/titulo/titulo.model';
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-titulo-read',
@@ -9,21 +13,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TituloReadComponent implements OnInit {
   titulos: Titulo[] = new Array();
+  atores: Ator[] = new Array();
   displayedColumns = ['id', 'nome', 'ano', 'sinopse', 'categoria', 'diretor', 'classe', 'atores', 'action'];
-  constructor(private router: Router) {   }
+  constructor(private router: Router, private tituloService: TituloService) {   }
 
   ngOnInit(): void {
-    this.titulos = [
-      { id: 1, nome: "Era uma vez", ano: "2021", sinopse: "o amor é furada", categoria: "ficção", diretor: "Carla", classe: "ouro", 
-      atores: ["joao", "ana", "carlos"]
-      },
-      { id: 2, nome: "Era do gelo", ano: "2009", sinopse: "filme gelado e engraçado", categoria: "aventura", diretor: "Jack", classe: "diamante", 
-      atores: ["mamute", "tigre", "tartaruga"]
-      }
-      ];
+    this.tituloService.read().subscribe(titulos =>{
+      this.titulos = titulos;
+  });
+
   }
   delete(id: String): void{
-    // this.productService.delete(id);
-    alert("Deletar título " + id + " ainda não funcional! Ajustar Backend!");
+    this.tituloService.delete(id).pipe(
+      catchError((err) => {
+        console.log(err);
+        this.tituloService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })).subscribe(() =>{
+        this.tituloService.showMsg("Título deletado com sucesso!");
+        window.location.reload();
+    });
   }
 }
