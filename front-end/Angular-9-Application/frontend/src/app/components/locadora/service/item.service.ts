@@ -1,4 +1,4 @@
-import { Ator } from './../model/ator/ator.model';
+import { Item } from './../model/item/item.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar'
@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AtorService {
+export class ItemService {
 
-  baseUrl = "http://localhost:8080/locadora/ator";
+  baseUrl = "http://localhost:8080/locadora/item";
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
   
   showMsg(msg: string): void{
@@ -19,27 +19,27 @@ export class AtorService {
     });
   }
 
-  create(ator: Ator): Observable<Ator>{
-    return this.http.post<Ator>(this.baseUrl, ator);
+  create(item: Item): Observable<Item>{
+    return this.http.post<Item>(this.baseUrl, item);
   }
-  read():Observable<Ator[]>{
-    return this.http.get<Ator[]>(this.baseUrl);
+  read():Observable<Item[]>{
+    return this.http.get<Item[]>(this.baseUrl);
   }
 
-  readById(id: String): Observable<Ator>
+  readById(id: String): Observable<Item>
   {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.get<Ator>(url);
+    return this.http.get<Item>(url);
   }
 
-  update(ator: Ator): Observable<Ator>
+  update(item: Item): Observable<Item>
   {
-    return this.http.put<Ator>(this.baseUrl, ator);
+    return this.http.put<Item>(this.baseUrl, item);
   }
 
-  delete(id: String): Observable<Ator>
+  delete(id: String): Observable<Item>
   {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<Ator>(url);
+    return this.http.delete<Item>(url);
   }
 }

@@ -1,5 +1,8 @@
+import { DiretorService } from './../../../service/diretor.service';
 import { Diretor } from './../../../model/diretor/diretor.model';
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-diretor-read',
@@ -9,18 +12,22 @@ import { Component, OnInit } from '@angular/core';
 export class DiretorReadComponent implements OnInit {
   diretores: Diretor[] = new Array();
   displayedColumns = ['id', 'nome', 'action'];
-  constructor() { }
+  constructor(private diretorService: DiretorService) { }
 
   ngOnInit(): void {
-    this.diretores = [
-      { id_diretor: 1, nome: "Josué" },
-      { id_diretor: 2, nome: "Emma Wattson" },
-      { id_diretor: 3, nome: "Carlos Mioto" },
-      { id_diretor: 4, nome: "Maria Clara" }
-      ];
+    this.diretorService.read().subscribe(diretores =>{
+      this.diretores = diretores;
+  });
   }
   delete(id: String): void{
-    // this.productService.delete(id);
-    alert("Deletar diretor " + id + " ainda não funcional! Ajustar Backend!");
+    this.diretorService.delete(id).pipe(
+      catchError((err) => {
+        console.log(err);
+        this.diretorService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })).subscribe(() =>{
+        this.diretorService.showMsg("Diretor deletado com sucesso!");
+        window.location.reload();
+    });
   }
 }

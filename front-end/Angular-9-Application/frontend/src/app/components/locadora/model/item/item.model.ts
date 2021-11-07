@@ -1,8 +1,8 @@
 import { Titulo } from './../titulo/titulo.model';
 export interface Item{
     id_item?: number;
-    numeroSerie: number;
+    numero_serie?: number;
     titulo: Titulo;
-    dataAquisicao: string;
-    tipo: string
+    data_aquisicao?: string;
+    tipo?: string
 }

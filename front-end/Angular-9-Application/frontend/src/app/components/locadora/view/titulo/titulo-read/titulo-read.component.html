@@ -33,13 +33,13 @@
       <!-- Diretor Column -->
       <ng-container matColumnDef="diretor">
         <th mat-header-cell *matHeaderCellDef>Diretor</th>
-        <td mat-cell *matCellDef="let row">{{row.diretor}}</td>
+        <td mat-cell *matCellDef="let row">{{row.diretor.nome}}</td>
       </ng-container>   
 
        <!-- Classe Column -->
        <ng-container matColumnDef="classe">
         <th mat-header-cell *matHeaderCellDef>Classe</th>
-        <td mat-cell *matCellDef="let row">{{row.classe}}</td>
+        <td mat-cell *matCellDef="let row">{{row.classe.nome}}</td>
       </ng-container>   
 
        <!-- Atores Column -->

@@ -13,8 +13,8 @@ import { throwError } from 'rxjs';
 export class AtorCreateComponent implements OnInit {
   ator: Ator = {
     id_ator: undefined,
-    nome: ""
-  }
+    nome: undefined
+  } 
   constructor(private router: Router, private atorService: AtorService) { }
 
   ngOnInit(): void {

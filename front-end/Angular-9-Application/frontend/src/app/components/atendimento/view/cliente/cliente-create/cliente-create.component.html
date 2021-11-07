@@ -5,16 +5,21 @@
             <input matInput placeholder="Nome" [(ngModel)]="cliente.nome" type="text" name="name">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Numéro da inscrição" [(ngModel)]="cliente.numInscricao" type="number" name="numInscricao">
+            <input matInput placeholder="Numéro da inscrição" [(ngModel)]="cliente.num_inscricao" type="number" name="num_inscricao">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Data de nascimento" [(ngModel)]="cliente.dataNascimento" type="date" name="dataNascimento">
+            <input matInput placeholder="Data de nascimento" [(ngModel)]="cliente.data_nascimento" type="date" name="data_nascimento">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Sexo" [(ngModel)]="cliente.sexo" type="text" name="sexo">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Ativo" [(ngModel)]="cliente.ativo" type="text" name="ativo">
+            <mat-label>Ativo</mat-label>
+            <mat-select name="ativo">
+                <mat-option *ngFor="let opcao of ativoInativo" [value]="opcao" [(ngModel)]="cliente.ativo">
+                  {{opcao}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </form>
     <button mat-raised-button (click) ="createCliente()" class="button-new-cliente">

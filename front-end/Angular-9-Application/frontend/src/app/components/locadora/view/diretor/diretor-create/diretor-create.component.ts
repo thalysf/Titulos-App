@@ -1,6 +1,9 @@
+import { DiretorService } from './../../../service/diretor.service';
 import { Diretor } from './../../../model/diretor/diretor.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import {catchError} from 'rxjs/operators'
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-diretor-create',
@@ -9,19 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiretorCreateComponent implements OnInit {
   diretor: Diretor = {
-    id_diretor: 0,
-    nome: ""
+    id_diretor: undefined,
+    nome: undefined
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router, private diretorService: DiretorService) { }
 
   ngOnInit(): void {
   }
   createDiretor(): void{
-    alert("Diretor ainda não pode ser criado! Ajustar backend!");
-    // this.productService.create(this.product).subscribe(() =>{
-    //   this.productService.showMsg('Produto criado com sucesso!');
-    //   this.router.navigate(['/ator']);
-    // });
+    this.diretorService.create(this.diretor)
+    .pipe(
+      catchError((err) => {
+        this.diretorService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() =>{
+      this.diretorService.showMsg('Diretor criado com sucesso!');
+      this.router.navigate(['/diretor']);
+    });
 
   }
   cancel(): void{

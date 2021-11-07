@@ -1,9 +1,15 @@
+import { AtorService } from './../../../service/ator.service';
+import { ClasseService } from './../../../service/classe.service';
+import { DiretorService } from './../../../service/diretor.service';
+import { TituloService } from './../../../service/titulo.service';
 import { Titulo } from 'src/app/components/locadora/model/titulo/titulo.model';
 import { Router } from '@angular/router';
 import { Ator } from './../../../model/ator/ator.model';
 import { Classe } from './../../../model/classe/classe.model';
 import { Diretor } from './../../../model/diretor/diretor.model';
 import { Component, OnInit } from '@angular/core';
+import {catchError} from 'rxjs/operators'
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-titulo-create',
@@ -12,49 +18,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TituloCreateComponent implements OnInit {
   titulo: Titulo = {
-    id_titulo: 0,
-    nome: "",
-    ano: "",
-    sinopse: "",
-    categoria: "",
-    diretor: "",
-    classe: "",
+    id_titulo: undefined,
+    nome: undefined,
+    ano: undefined,
+    sinopse: undefined,
+    categoria: undefined,
+    diretor: undefined,
+    classe: undefined,
     atores: []
   }
-
-  atoresSelecionados: any;
   diretores: Diretor[]  = new Array;
   classes: Classe[]  = new Array;
   atores: Ator[] = new Array();
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private tituloService: TituloService, 
+    private diretorService: DiretorService, private classeService: ClasseService, private atorService: AtorService) { }
 
   ngOnInit(): void {
-    this.diretores = [
-      {id_diretor: 1, nome: "Carlos"},
-      {id_diretor: 2, nome: "Anthony"},
-      {id_diretor: 3, nome: "Ana"},
-    ];
-    this.classes = [
-      { id_classe: 1, nome: "Bronze", valor: 1200, prazoDevolucao: 20},
-      { id_classe: 2, nome: "Prata", valor: 3000, prazoDevolucao: 15},
-      { id_classe: 3, nome: "Ouro", valor: 7000, prazoDevolucao: 10}
-      ];
-    this.atores = [
-      { id_ator: 1, nome: "Joao" },
-      { id_ator: 2, nome: "Carla" },
-      { id_ator: 3, nome: "Ana" },
-      { id_ator: 4, nome: "Andrea" },
-      { id_ator: 5, nome: "Maria" },
-      { id_ator: 6, nome: "Eduardo" }
-      ];
+    this.diretorService.read().subscribe(diretores =>{
+      this.diretores = diretores;
+  });
+  this.classeService.read().subscribe(classes =>{
+    this.classes = classes;
+  });
+  this.atorService.read().subscribe(atores =>{
+    this.atores = atores;
+  });
   }
   createTitulo(): void{
-    console.log(this.atoresSelecionados);
-    alert("Titulo ainda não pode ser criado! Ajustar backend!");
-    // this.productService.create(this.product).subscribe(() =>{
-    //   this.productService.showMsg('Produto criado com sucesso!');
-    //   this.router.navigate(['/titulo']);
-    // });
+    this.tituloService.create(this.titulo)
+    .pipe(
+      catchError((err) => {
+        this.tituloService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() =>{
+      this.tituloService.showMsg('Título criado com sucesso!');
+      this.router.navigate(['/titulo']);
+    });
   }
 
   cancel(): void{

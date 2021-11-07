@@ -26,8 +26,8 @@ export class AtorReadComponent implements OnInit {
         console.log(err);
         this.atorService.showMsg(err.error.message);
         return throwError(err);    //Rethrow it back to component
-      })).subscribe(Ator =>{
-        this.atorService.showMsg("Ator deletado com sucesso!");
+      })).subscribe(() =>{
+        this.atorService.showMsg("Classe deletada com sucesso!");
         window.location.reload();
     });
   }

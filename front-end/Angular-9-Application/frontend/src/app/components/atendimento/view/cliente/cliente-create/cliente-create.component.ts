@@ -9,15 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteCreateComponent implements OnInit {
   cliente: Cliente = {
-    id_cliente: 0,
-    nome: "",
-    numInscricao: 0,
-    dataNascimento: "",
-    sexo: "",
+    id_cliente: undefined,
+    nome: undefined,
+    num_inscricao: undefined,
+    data_nascimento: undefined,
+    sexo: undefined,
     ativo: true
   };
-
-
+  ativoInativo: Array<string> = ['true', 'false'];
   constructor(private router: Router) { }
 
   ngOnInit(): void {

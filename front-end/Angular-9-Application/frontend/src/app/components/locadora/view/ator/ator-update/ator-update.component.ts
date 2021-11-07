@@ -14,13 +14,20 @@ export class AtorUpdateComponent implements OnInit {
   // ator!: Ator; -> usar esse após ter implementado o backend
   ator: Ator = {
     id_ator: undefined,
-    nome: ""
+    nome: undefined
   }
   constructor(private router: Router, private route: ActivatedRoute, private atorService: AtorService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id') || "";
-    this.atorService.readById(id).subscribe((ator) =>{
+    this.atorService.readById(id)
+    .pipe(
+      catchError((err) => {
+        this.atorService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe((ator) =>{
       this.ator = ator;
     })
   }

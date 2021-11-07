@@ -10,15 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocioCreateComponent implements OnInit {
   socio: Socio = {
-    id_socio: 0,
-    numInscricao: 0,
-    nome: "",
-    dataNascimento: "",
-    sexo: "",
+    id_socio: undefined,
+    num_inscricao: undefined,
+    nome: undefined,
+    data_nascimento: undefined,
+    sexo: undefined,
     ativo: true,
-    cpf: "",
-    endereco: "",
-    tel: "",
+    cpf: undefined,
+    endereco: undefined,
+    tel: undefined,
     dependentes: []
   }
   dependentes: Cliente[] = new Array();
@@ -26,12 +26,7 @@ export class SocioCreateComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.dependentes = [
-      {id_cliente: 1, nome: "Carol", numInscricao: 9445561, dataNascimento: "10/05/2007", sexo: "feminino", ativo: true},
-      {id_cliente: 2, nome: "Igor", numInscricao: 1789561, dataNascimento: "30/01/2009", sexo: "masculino", ativo: true},
-      {id_cliente: 3, nome: "Ana", numInscricao: 5445561, dataNascimento: "10/05/2009", sexo: "feminino", ativo: true},
-      {id_cliente: 4, nome: "Julio", numInscricao: 3689561, dataNascimento: "30/01/2006", sexo: "masculino", ativo: true}
-    ];
+
   }
   createSocio(): void{
     alert("Sócio ainda não pode ser criado! Ajustar backend!");

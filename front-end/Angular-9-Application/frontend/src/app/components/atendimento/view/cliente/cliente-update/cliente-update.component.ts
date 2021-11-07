@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cliente-update.component.css']
 })
 export class ClienteUpdateComponent implements OnInit {
-  // cliente!: Cliente; -> utiliza desta forma quando o backend estiver finalizado
   cliente: Cliente = {
-    id_cliente: 0,
-    nome: "",
-    numInscricao: 0,
-    dataNascimento: "",
-    sexo: "",
+    id_cliente: undefined,
+    nome: undefined,
+    num_inscricao: undefined,
+    data_nascimento: undefined,
+    sexo: undefined,
     ativo: true
   };
+  ativoInativo: Array<string> = ['true', 'false'];
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {

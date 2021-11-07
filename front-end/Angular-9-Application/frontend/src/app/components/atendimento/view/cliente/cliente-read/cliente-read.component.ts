@@ -12,11 +12,7 @@ export class ClienteReadComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.clientes = [
-      {id_cliente: 1, nome: "Carol", numInscricao: 5445561, dataNascimento: "10/05/1999", sexo: "feminino", ativo: true},
-      {id_cliente: 2, nome: "Igor", numInscricao: 1689561, dataNascimento: "30/01/2000", sexo: "masculino", ativo: true},
-      {id_cliente: 3, nome: "Eduarda", numInscricao: 9982800, dataNascimento: "16/06/1998", sexo: "feminino", ativo: false}
-    ];
+
   }
 
 

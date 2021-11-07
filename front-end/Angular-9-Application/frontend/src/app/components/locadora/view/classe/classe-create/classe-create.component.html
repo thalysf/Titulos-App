@@ -8,7 +8,7 @@
             <input matInput placeholder="Valor" [(ngModel)]="classe.valor" type="number" name="valor">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Prazo de Devolução" [(ngModel)]="classe.prazoDevolucao" type="number" name="prazoDevolucao">
+            <input matInput placeholder="Prazo de Devolução em dias" [(ngModel)]="classe.prazo_devolucao" type="number" name="prazo_devolucao">
         </mat-form-field>
     </form>
     <button mat-raised-button (click) ="createClasse()" class="button-new-classe">
