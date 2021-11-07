@@ -23,11 +23,10 @@ export class AtorReadComponent implements OnInit {
   delete(id: String): void{
     this.atorService.delete(id).pipe(
       catchError((err) => {
-        console.log(err);
         this.atorService.showMsg(err.error.message);
         return throwError(err);    //Rethrow it back to component
       })).subscribe(() =>{
-        this.atorService.showMsg("Classe deletada com sucesso!");
+        this.atorService.showMsg("Ator deletado com sucesso!");
         window.location.reload();
     });
   }

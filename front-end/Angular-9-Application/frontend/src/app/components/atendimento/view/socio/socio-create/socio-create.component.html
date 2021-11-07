@@ -14,7 +14,12 @@
             <input matInput placeholder="Sexo" [(ngModel)]="socio.sexo" type="text" name="sexo">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Ativo" [(ngModel)]="socio.ativo" type="text" name="ativo">
+            <mat-label>Ativo</mat-label>
+            <mat-select  [(ngModel)]="socio.ativo" name="socio.ativo">
+                <mat-option *ngFor="let opcao of ativoInativo" [value]="opcao">
+                  {{opcao}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="CPF" [(ngModel)]="socio.cpf" type="text" name="cpf">
@@ -25,9 +30,9 @@
         <mat-form-field>
             <input matInput placeholder="Telefone" [(ngModel)]="socio.tel" type="text" name="tel">
         </mat-form-field>
-        <label for="dependentesSelecionados">Dependentes:</label>
-        <select multiple [(ngModel)]="dependentesSelecionados" name="dependentesSelecionados" id="dependentesSelecionados" style="height: 300px;">
-            <option *ngFor="let dependente of dependentes" [value]="dependente.id_cliente">{{dependente.nome}}</option>
+        <label for="socio.dependentes">Dependentes:</label>
+        <select multiple [(ngModel)]="socio.dependentes" name="socio.dependentes" id="dependentesSelecionados" style="height: 300px;">
+            <option *ngFor="let dependente of dependentes" [value]="dependente">{{dependente.nome}}</option>
         </select>
     </form>
     <button mat-raised-button (click) ="createSocio()" class="button-new-socio">

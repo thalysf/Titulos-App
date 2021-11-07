@@ -15,8 +15,8 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Ativo</mat-label>
-            <mat-select name="ativo">
-                <mat-option *ngFor="let opcao of ativoInativo" [value]="opcao" [(ngModel)]="cliente.ativo">
+            <mat-select  [(ngModel)]="cliente.ativo" name="cliente.ativo">
+                <mat-option *ngFor="let opcao of ativoInativo" [value]="opcao">
                   {{opcao}}
                 </mat-option>
             </mat-select>

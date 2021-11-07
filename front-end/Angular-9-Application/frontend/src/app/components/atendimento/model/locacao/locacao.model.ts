@@ -1,3 +1,4 @@
+import { Socio } from './../cliente/socio.model';
 import { Cliente } from './../cliente/cliente.model';
 import { Item } from './../../../locadora/model/item/item.model';
 export interface Locacao{
@@ -8,5 +9,6 @@ export interface Locacao{
     valor_cobrado?: number;
     multa_cobrada?: number;
     item: Item;
-    cliente: Cliente
+    cliente: Cliente;
+    socio: Socio
 }

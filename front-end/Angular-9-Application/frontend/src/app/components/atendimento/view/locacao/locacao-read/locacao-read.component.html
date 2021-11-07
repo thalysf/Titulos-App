@@ -45,7 +45,13 @@
       <!-- Cliente Column -->
       <ng-container matColumnDef="cliente">
         <th mat-header-cell *matHeaderCellDef>Cliente</th>
-        <td mat-cell *matCellDef="let row">{{row.cliente.nome}}</td>
+        <td mat-cell *matCellDef="let row">{{row.cliente?.nome}}</td>
+      </ng-container>   
+
+      <!-- Sócio Column -->
+      <ng-container matColumnDef="socio">
+        <th mat-header-cell *matHeaderCellDef>Sócio</th>
+        <td mat-cell *matCellDef="let row">{{row.socio?.nome}}</td>
       </ng-container>   
 
     <!-- Action Column -->

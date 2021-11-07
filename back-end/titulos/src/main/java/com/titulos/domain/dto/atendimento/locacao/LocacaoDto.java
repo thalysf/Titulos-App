@@ -2,6 +2,7 @@ package com.titulos.domain.dto.atendimento.locacao;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.titulos.domain.dto.atendimento.cliente.ClienteDto;
+import com.titulos.domain.dto.atendimento.cliente.SocioDto;
 import com.titulos.domain.dto.locadora.ItemDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,6 +39,10 @@ public class LocacaoDto {
     @JsonProperty("cliente")
     @NotNull
     private ClienteDto cliente;
+
+    @JsonProperty("socio")
+    @NotNull
+    private SocioDto socio;
 
     @JsonProperty("item")
     @NotNull

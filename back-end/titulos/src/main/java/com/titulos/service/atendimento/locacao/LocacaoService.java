@@ -120,26 +120,40 @@ public class LocacaoService {
         {
             illegalArgumentsErrosMsg += "Multa cobrada é calculada após a devolução feita por meio do UPATE da locação, portanto campo não deve ser informado!";
         }
-        if(locacaoDto.getCliente() == null)
+        if(locacaoDto.getCliente() == null && locacaoDto.getSocio() == null)
         {
-            illegalArgumentsErrosMsg += "Cliente da locação deve ser informada!";
+            illegalArgumentsErrosMsg += "Cliente ou sócio deve ser informado na locação!";
         }
         if(locacaoDto.getItem() == null)
         {
             illegalArgumentsErrosMsg += "Item da locação deve ser informada!";
         }
-        // Validando se o cliente já possui uma locação ativa e que não efetuou a devolução
-
-        var locacoes = locacaoRepository.findAllByClienteIdCliente(locacaoDto.getCliente().getIdCliente());
-
-        if(locacoes.isPresent())
+        if(locacaoDto.getCliente() != null && locacaoDto.getSocio() != null)
         {
-            for(Locacao locacao : locacoes.get())
-            {
-                if(locacao.getDataDevolucaoEfetiva() == null)
-                {
-                    illegalArgumentsErrosMsg += "Ainda existem locações pendentes para o cliente de id " + locacaoDto.getCliente().getIdCliente() + "!";
-                    break;
+            illegalArgumentsErrosMsg += "Uma locação pode estar associada apenas a um cliente ou sócio! Não a ambos!";
+        }
+        // Validando se o cliente ou sócio já possui uma locação ativa e que não efetuou a devolução
+        else if(locacaoDto.getCliente() != null) {
+            var locacoesCliente = locacaoRepository.findAllByClienteIdCliente(locacaoDto.getCliente().getIdCliente());
+
+            if (locacoesCliente.isPresent()) {
+                for (Locacao locacao : locacoesCliente.get()) {
+                    if (locacao.getDataDevolucaoEfetiva() == null) {
+                        illegalArgumentsErrosMsg += "Ainda existem locações pendentes para o cliente de id " + locacaoDto.getCliente().getIdCliente() + "!";
+                        break;
+                    }
+                }
+            }
+        }
+        else {
+            var locacoesSocio = locacaoRepository.findAllBySocioIdSocio(locacaoDto.getSocio().getIdSocio());
+
+            if (locacoesSocio.isPresent()) {
+                for (Locacao locacao : locacoesSocio.get()) {
+                    if (locacao.getDataDevolucaoEfetiva() == null) {
+                        illegalArgumentsErrosMsg += "Ainda existem locações pendentes para o sócio de id " + locacaoDto.getSocio().getIdSocio() + "!";
+                        break;
+                    }
                 }
             }
         }
@@ -164,15 +178,18 @@ public class LocacaoService {
         ) {
             illegalArgumentsErrosMsg += "Data da devolução efetiva deve ser informada & Data da devolução efetiva deve ser maior ou igual a data de locação!";
         }
-        if(locacaoDto.getCliente() == null)
+        if(locacaoDto.getCliente() == null && locacaoDto.getSocio() == null)
         {
-            illegalArgumentsErrosMsg += "Cliente da locação deve ser informada!";
+            illegalArgumentsErrosMsg += "Cliente ou sócio deve ser informado na locação!";
         }
         if(locacaoDto.getItem() == null)
         {
             illegalArgumentsErrosMsg += "Item da locação deve ser informada!";
         }
-
+        if(locacaoDto.getCliente() != null && locacaoDto.getSocio() != null)
+        {
+            illegalArgumentsErrosMsg += "Uma locação pode estar associada apenas a um cliente ou sócio! Não a ambos!";
+        }
         if (!illegalArgumentsErrosMsg.isEmpty())
             throw new IllegalArgumentException(illegalArgumentsErrosMsg);
     }

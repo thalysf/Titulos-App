@@ -892,13 +892,42 @@
 					"name": "locacao",
 					"item": [
 						{
-							"name": "Cadastra Locação",
+							"name": "Cadastra Locação - Cliente",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"data_locacao\": \"2021-05-06\",\r\n    \"cliente\": \r\n    {\r\n        \"id_cliente\": 4\r\n    },\r\n    \"item\":\r\n    {\r\n        \"id_item\": 4\r\n    }\r\n}",
+									"raw": "{\r\n    \"data_locacao\": \"2021-05-06\",\r\n    \"cliente\": \r\n    {\r\n        \"id_cliente\": 8\r\n    },\r\n    \"item\":\r\n    {\r\n        \"id_item\": 8\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/atendimento/locacao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"atendimento",
+										"locacao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastra Locação - Sócio",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data_locacao\": \"2021-05-06\",\r\n    \"socio\": \r\n    {\r\n        \"id_socio\": 8\r\n    },\r\n    \"item\":\r\n    {\r\n        \"id_item\": 8\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"

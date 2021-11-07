@@ -1,6 +1,9 @@
+import { ClienteService } from './../../../service/cliente.service';
 import { Router } from '@angular/router';
 import { Cliente } from './../../../model/cliente/cliente.model';
 import { Component, OnInit } from '@angular/core';
+import {catchError} from 'rxjs/operators'
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-cliente-create',
@@ -17,17 +20,23 @@ export class ClienteCreateComponent implements OnInit {
     ativo: true
   };
   ativoInativo: Array<string> = ['true', 'false'];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     
   }
   createCliente(): void{
-    alert("Cliente ainda não pode ser criado! Ajustar backend!");
-    // this.productService.create(this.product).subscribe(() =>{
-    //   this.productService.showMsg('Produto criado com sucesso!');
-    //   this.router.navigate(['/cliente']);
-    // });
+    this.clienteService.create(this.cliente)
+    .pipe(
+      catchError((err) => {
+        this.clienteService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() =>{
+      this.clienteService.showMsg('Cliente criado com sucesso!');
+      this.router.navigate(['/cliente']);
+    });
   }
 
   cancel(): void{

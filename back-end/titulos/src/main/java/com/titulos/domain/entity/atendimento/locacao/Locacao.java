@@ -1,6 +1,7 @@
 package com.titulos.domain.entity.atendimento.locacao;
 
 import com.titulos.domain.entity.atendimento.cliente.Cliente;
+import com.titulos.domain.entity.atendimento.cliente.Socio;
 import com.titulos.domain.entity.locadora.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,9 +29,12 @@ public class Locacao {
     private Double multaCobrada;
 
     @ManyToOne
-    @NotNull
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "idSocio")
+    private Socio socio;
 
     @ManyToOne
     @NotNull

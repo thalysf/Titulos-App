@@ -11,7 +11,6 @@ import { throwError } from 'rxjs';
   styleUrls: ['./ator-update.component.css']
 })
 export class AtorUpdateComponent implements OnInit {
-  // ator!: Ator; -> usar esse após ter implementado o backend
   ator: Ator = {
     id_ator: undefined,
     nome: undefined

@@ -80,9 +80,13 @@ public class SocioService {
         {
             illegalArgumentsErrosMsg += "Nome do socio não pode ser nulo ou vazio";
         }
-        if(socioDto.getNumInscricao() <= 0)
+        if(socioDto.getDataNascimento() == null)
         {
-            illegalArgumentsErrosMsg += "Número da inscrição do socio não pode ser menor ou igual a zero";
+            illegalArgumentsErrosMsg += "Data de nascimento deve ser preenchida!";
+        }
+        if(socioDto.getNumInscricao() == null || socioDto.getNumInscricao() <= 0)
+        {
+            illegalArgumentsErrosMsg += "Número da inscrição do socio deve ser preenchido e não pode ser menor ou igual a zero!";
         }
         if(socioDto.getSexo() == null)
         {

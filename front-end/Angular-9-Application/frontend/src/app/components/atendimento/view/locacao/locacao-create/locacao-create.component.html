@@ -5,22 +5,22 @@
             <input matInput placeholder="Data da Locação" [(ngModel)]="locacao.data_locacao" type="date" name="data_locacao">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Data prevista da Devolução" [(ngModel)]="locacao.data_devolucao_prevista" type="date" name="data_devolucao_prevista">
+            <input matInput readonly ng-readonly="true" placeholder="Data prevista da Devolução (readonly)" [(ngModel)]="locacao.data_devolucao_prevista" type="date" name="data_devolucao_prevista">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Data efetiva da Devolução" [(ngModel)]="locacao.data_devolucao_efetiva" type="date" name="data_devolucao_efetiva">
+            <input matInput readonly placeholder="Data efetiva da Devolução (readonly)" [(ngModel)]="locacao.data_devolucao_efetiva" type="date" name="data_devolucao_efetiva">
         </mat-form-field> 
         <mat-form-field>
-            <input matInput placeholder="Valor Cobrado" [(ngModel)]="locacao.valor_cobrado" type="number" name="valor_cobrado">
+            <input matInput readonly placeholder="Valor Cobrado (readonly)" [(ngModel)]="locacao.valor_cobrado" type="number" name="valor_cobrado">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Multa Cobrada" [(ngModel)]="locacao.multa_cobrada" type="number" name="multa_cobrada">
+            <input matInput readonly placeholder="Multa Cobrada (readonly)" [(ngModel)]="locacao.multa_cobrada" type="number" name="multa_cobrada">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Item</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let item of itens" [value]="item.id_item">
+            <mat-select [(ngModel)]="locacao.item" name="locacao.item">
+                <mat-option *ngFor="let item of itens" [value]="item">
                   {{item.titulo.nome}}
                 </mat-option>
             </mat-select>
@@ -28,9 +28,18 @@
 
         <mat-form-field>
             <mat-label>Cliente</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let cliente of clientes" [value]="cliente.id_cliente">
+            <mat-select [(ngModel)]="locacao.cliente" name="locacao.cliente">
+                <mat-option *ngFor="let cliente of clientes" [value]="cliente">
                   {{cliente.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field>
+            <mat-label>Sócio</mat-label>
+            <mat-select [(ngModel)]="locacao.socio" name="locacao.socio">
+                <mat-option *ngFor="let socio of socios" [value]="socio">
+                  {{socio.nome}}
                 </mat-option>
             </mat-select>
         </mat-form-field> 

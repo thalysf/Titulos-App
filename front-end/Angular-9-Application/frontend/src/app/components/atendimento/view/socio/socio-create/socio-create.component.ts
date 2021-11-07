@@ -1,7 +1,11 @@
+import { ClienteService } from './../../../service/cliente.service';
+import { SocioService } from './../../../service/socio.service';
 import { Cliente } from './../../../model/cliente/cliente.model';
 import { Socio } from './../../../model/cliente/socio.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import {catchError} from 'rxjs/operators'
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-socio-create',
@@ -21,19 +25,27 @@ export class SocioCreateComponent implements OnInit {
     tel: undefined,
     dependentes: []
   }
+  ativoInativo: Array<string> = ['true', 'false'];
   dependentes: Cliente[] = new Array();
-  dependentesSelecionados: any;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private socioService: SocioService, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
-
+    this.clienteService.read().subscribe(dependentes =>{
+      this.dependentes = dependentes;
+  });
   }
   createSocio(): void{
-    alert("Sócio ainda não pode ser criado! Ajustar backend!");
-    // this.productService.create(this.product).subscribe(() =>{
-    //   this.productService.showMsg('Produto criado com sucesso!');
-    //   this.router.navigate(['/socio']);
-    // });
+    this.socioService.create(this.socio)
+    .pipe(
+      catchError((err) => {
+        this.socioService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() =>{
+      this.socioService.showMsg('Sócio criado com sucesso!');
+      this.router.navigate(['/socio']);
+    });
   }
 
   cancel(): void{

@@ -1,6 +1,9 @@
+import { ClienteService } from './../../../service/cliente.service';
 import { Cliente } from './../../../model/cliente/cliente.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-cliente-update',
@@ -17,15 +20,35 @@ export class ClienteUpdateComponent implements OnInit {
     ativo: true
   };
   ativoInativo: Array<string> = ['true', 'false'];
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id') || "";
+    this.clienteService.readById(id)
+    .pipe(
+      catchError((err) => {
+        this.clienteService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe((cliente) =>{
+      this.cliente = cliente;
+    })
   }
   updateCliente(): void{
     const id = this.route.snapshot.paramMap.get('id') || "";
-    alert("Cliente ainda não pode ser atualizado, id: "+ id + "! Ajustar backend!");
-    //this.ProductService.update(this.product).subscribe(() => this.ProductService.showMsg("Produto alterado com sucesso! Recarregue a página para atualizar!"));
-    //this.router.navigate(['/cliente']);
+    this.clienteService.update(this.cliente)
+    .pipe(
+      catchError((err) => {
+        this.clienteService.showMsg(err.error.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
+    .subscribe(() => 
+    {
+        this.clienteService.showMsg("Cliente alterado com sucesso!")
+        this.router.navigate(['/cliente'])
+    });
   }
   cancel(): void{
     this.router.navigate(['/cliente']);

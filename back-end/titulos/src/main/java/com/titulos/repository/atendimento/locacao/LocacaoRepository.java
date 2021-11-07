@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface LocacaoRepository extends JpaRepository<Locacao, Long> {
     Optional<List<Locacao>> findAllByClienteIdCliente(Long idCliente);
+    Optional<List<Locacao>> findAllBySocioIdSocio(Long idSocio);
 }
